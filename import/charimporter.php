@@ -26,18 +26,27 @@ include_once($eqdkp_root_path.'common.php');
 class charImporter extends page_generic {
 	
 	public function __construct() {
-		parent::__construct(true, $handler, array());
+		parent::__construct(false, array(
+			#'massupdate'		=> array('process' => 'perform_massupdate'),
+			#'resetcache'		=> array('process' => 'perform_resetcache'),
+			#'ajax_massupdate'	=> array('process' => 'ajax_massupdate'),
+			#'ajax_mudate'		=> array('process' => 'ajax_massupdatedate'),
+		), array());
+		
+		
+		$this->this_game = $this->game->get_game();
+		$this->pdh->get_read_modules();
 		
 		$this->user->check_auth('u_member_add');
 		$this->user->check_auth('u_member_man');
-		
 		$this->process();
 	}
 
+	protected $this_game;
 
 
 	public function perform_step0(){
-		$this->tpl->js_file($this->root_path.'plugins/wow_assasinen_extend/includes/arsenal_game_charimporter.js');
+		$this->tpl->js_file($this->root_path.'games/'.$this->this_game.'/arsenal/arsenal_charimporter.js');
 		$this->tpl->add_css('
 			#drag-drop-area-single {
 				border: 4px dashed #BBB;
@@ -90,21 +99,41 @@ class charImporter extends page_generic {
 
 
 	public function perform_step1(){
-		
-		
-		$this->pdh->put('arsenal_character', 'add', array(0,'GILDE','','','','','','TEST'));
-		
-		
 		if(!count($this->in->getArray('chardump', 'string')) >= 1) return;
 		foreach($this->in->getArray('chardump', 'string') as $dumps){
 			$arrData = $this->arsenal->parse_chardump($dumps);
 			
+			/*$arrMemberIDs = $this->pdh->aget('member', 'name', 0, array($this->pdh->get('member', 'id_list')));
+			foreach($arrMemberIDs as $id => $name){
+				if($arrData['unit']['name'] != $name){
+					$this->pdh->put('arsenal_character', 'add', array(
+						$id,
+						$arrData['unit']['name'],
+						$arrData['unit']['race'],		// convert to raceID
+						$arrData['unit']['gender'],
+						$arrData['unit']['class'],		// convert to classID
+						$arrData['unit']['level'],
+						$arrData['unit']['name'],
+						'',								// empty to get current time
+						$arrData['title'],				// convert to json --> parse before name to lang_var
+						$arrData['rep'],				// convert to json --> parse before name to lang_var
+						$arrData['currency'],			// convert to json --> parse before name to lang_var
+						$arrData['spells'],				// unset cause chardump error
+						$arrData['glyphs'],				// unset cause chardump error
+						$arrData['mounts'],				// build new array from data['creature']
+						$arrData['critters'],			// build new array from data['creature']
+						$arrData['awards']				// build new array from data['awards']  --- see awards_achievements, it beware new methods
+					));
+				}
+				
+			}*/
 			
+			d('___________________________________________________________________________________________________');
 			d($arrData);
 		}
 		
 		
-		
+		/*
 		if($this->in->get('member_id', 0) > 0){
 			// We'll update an existing one...
 			$isindatabase	= $this->in->get('member_id', 0);
@@ -181,7 +210,7 @@ class charImporter extends page_generic {
 			$hmtlout	.= '<div class="errorbox roundbox">
 								<i class="fa fa-exclamation-triangle fa-4x pull-left"></i>'.$this->game->glang('uc_notyourchar').'</div>
 							</div>';
-		}
+		}*/
 		return $hmtlout;
 	}
 

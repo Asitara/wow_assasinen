@@ -28,12 +28,9 @@ if(!defined('EQDKP_INC')){
   +--------------------------------------------------------------------------*/
 if(!class_exists('pdh_w_arsenal_character')){
   class pdh_w_arsenal_character extends pdh_w_generic{
- 
-    public function __construct(){
-    	parent::pdh_w_generic();
-    }
-
-    public function add($id, $name, $race, $gender, $class, $level=85, $global='', $title='', $rep='', $currency='', $glyphs='', $mounts='', $critters='', $stistics='', $achievements=''){
+  
+  
+    public function add($id, $name, $race, $gender, $class, $level=85, $global='',$last_update=time, $title='', $rep='', $currency='', $glyphs='', $mounts='', $critters='', $stistics='', $achievements=''){
 		if($id === 0 && $name == 'GILDE'){ $race=0; $gender=0; $class=0; }
 		
 		$arrQuery = array(
@@ -44,20 +41,22 @@ if(!class_exists('pdh_w_arsenal_character')){
 			'class'			=> $class,
 			'level'			=> $level,
 			'global'		=> $global,
+			'last_update'	=> $last_update,
 			'title'			=> $title,
 			'rep'			=> $rep,
 			'currency'		=> $currency,
 			'glyphs'		=> $glyphs,
 			'mounts'		=> $mounts,
 			'critters'		=> $critters,
-			'stistics'		=> $stistics,
+			'statistics'	=> $stistics,
 			'achievements'	=> $achievements
 		);
 		
-		$objQuery = $this->db->prepare("INSERT INTO __awards_assignments :p")->set($arrQuery)->execute();
+		$objQuery = $this->db->prepare("INSERT INTO __arsenal_character :p")->set($arrQuery)->execute();
 		
 		if(!$objQuery) return false;
-		$pdh->enqueue_hook('arsenal_character'); return true;
+		#$pdh->enqueue_hook('arsenal_character');
+		return true;
     }
 
 

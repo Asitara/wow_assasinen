@@ -189,7 +189,7 @@ if(!class_exists('wow_assasinen')){
 			$this->pdh->register_read_module($this->this_game, $this->path.'pdh/read/'.$this->this_game);
 			
 			// Meine Klasse und mein benötigtes PDH Modul
-			registry::add_class('wow_arsenal', $this->root_path.'plugins/wow_assasinen_extend/classes/', 'arsenal');
+			registry::add_class('wow_arsenal', $this->path.'arsenal/', 'arsenal');
 			$this->pdh->register_write_module('arsenal_character', $this->path.'pdh/write/arsenal_character');
 			
 			$this->importers = array(
@@ -205,6 +205,10 @@ if(!class_exists('wow_assasinen')){
 
 		/* Install Routine */
 		public function install($blnEQdkpInstall=false){
+			// include arsenalSQL and default configuration data for installation
+#			include($this->path.'arsenal/sql.php');
+#			for ($i = 1; $i <= count($arsenalSQL['install']); $i++)
+#				$this->db->query($arsenalSQL['install'][$i]);
 			
 			// Gilde -- Events
 			$arrEventIDs = $arrDefaultEventIDs = array();
@@ -262,7 +266,11 @@ if(!class_exists('wow_assasinen')){
 
 		/* Uninstall Routine */
 		public function uninstall(){
-		
+			// include arsenalSQL data for uninstallation
+#			include($this->path.'arsenal/sql.php');
+#			for ($i = 1; $i <= count($arsenalSQL['uninstall']); $i++)
+#				$this->db->query($arsenalSQL['uninstall'][$i]);
+			
 			#$this->game->removeLink("WoW Battle.net");
 		}
 
