@@ -24,6 +24,24 @@ if (!defined('EQDKP_INC')){
 }
 
 $lang = array(
+	'professions' => array(
+		0	=> 'Unbekannt',
+		1	=> 'Alchemie',
+		2	=> 'Bergbau',
+		3	=> 'Ingenieurskunst',
+		4	=> 'Inschriftenkunde',
+		5	=> 'Juwelierskunst',
+		6	=> 'Kräuterkunde',
+		7	=> 'Kürschnerei',
+		8	=> 'Lederverarbeitung',
+		9	=> 'Schmiedekunst',
+		10	=> 'Schneiderei',
+		11	=> 'Verzauberkunst',
+		12	=> 'Angeln',
+		13	=> 'Archäologie',
+		14	=> 'Erste Hilfe',
+		15	=> 'Kochkunst',
+	),
 	'titles' => array(
 		1	=> 'Gefreite ',
 		2	=> 'Fußknecht ',

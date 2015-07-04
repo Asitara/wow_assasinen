@@ -88,6 +88,7 @@ class charImporter extends page_generic {
 				</div>
 			</div>
 			<div id="read_chardump"></div>
+			<ul id="list_chardump"></ul>
 			</br>
 			<p style="margin: 15px auto 0px; width: 250px; text-align: center;">
 				<button type="submit" name="submit" align="center"><i class="fa fa-download"></i> '.$this->game->glang('uc_import_forw').'</button>

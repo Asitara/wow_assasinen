@@ -18,11 +18,19 @@
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function preParseChardump(str){
+function parseDump(str){
 	return String(str)
-			.slice(16, -3)
-			.replace(/\\\\'/g, '&#39;')
-			.replace(/'/g, '&#39;');
+			.slice(16, -3)				// delete the .lua code at the start & end
+			.replace(/\\\\'/g, '&#39;') // now we validate the string cause 
+			.replace(/'/g, '&#39;')		// we have vars like: "name" => ""ESSENSSCHLACHT!"" or "name" => 'Die Seh'her'
+			
+			.replace(/\\\"/g, '"')	// last validate the bindings between index and value of each entry
+			.replace(/\\/g, ''); // stripslashes() -- cause the .lua json escaped the string
+}
+
+function parseDump2Array(str){
+	objJSONdump = jQuery.parseJSON( str );
+	return objJSONdump;
 }
 
 function readChardump(files){
@@ -34,11 +42,15 @@ function readChardump(files){
 		oFReader.onload = (function(theFile){
 			return function(e){
 				chardump = e.target.result;
-				chardump = preParseChardump(chardump);
+				
+				
+				chardump = parseDump(chardump);
 				
 				$('#read_chardump').append('<input name="chardump['+i+']" type="input" />');
 				$('#read_chardump input[name="chardump['+i+']"]').val(chardump);
 				
+				objJSONdump = parseDump2Array(chardump)
+				$('#list_chardump').append('<li><strong>'+objJSONdump.global.name+'</strong>, erstellt am '+objJSONdump.global.date+'</li>');
 			};
 		})(f);
 		

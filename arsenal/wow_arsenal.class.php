@@ -44,12 +44,24 @@ if(!class_exists('wow_arsenal')){
 		public function parse_chardump($jsonChardump){
 			//parse to valid json and decode it
 			if(!empty($jsonChardump)){
-				$jsonChardump = preg_replace('/\\\"/', '"', $jsonChardump);  // Fixed " \\"ESSENSCHLACHT!\\" "
-				$jsonChardump = stripslashes($jsonChardump);
+				#$jsonChardump = preg_replace('/\\\"/', '"', $jsonChardump);  // Fixed " \\"ESSENSCHLACHT!\\" "
+				#$jsonChardump = stripslashes($jsonChardump);
 				$jsonChardump = $this->in->decode_entity($jsonChardump);
 				
 				$arrData = json_decode($jsonChardump, true);
 			}
+			
+			d($arrData);die;
+			
+			/*
+			
+			,\"global\":{ 
+			
+			\"},\"
+			
+			*/
+			
+			
 			
 			//rebuild arrays and array_values
 			$arrData['global']['date']= $this->time->fromformat($arrData['global']['date'], 'M d Y');
@@ -71,16 +83,16 @@ if(!class_exists('wow_arsenal')){
 			} $arrData['unit']['race'] = $rb_race;
 			
 			switch($rb_class = $arrData['unit']['class']){
-				case 'DEATHKNIGHT':$rb_class = 1; break;
-				case 'DRUID':$rb_class = 2; break;
-				case 'HUNTER':$rb_class = 3; break;
-				case 'MAGE':$rb_class = 4; break;
-				case 'PALADIN':$rb_class = 5; break;
-				case 'PRIEST':$rb_class = 6; break;
-				case 'ROGUE':$rb_class = 7; break;
-				case 'SHAMAN':$rb_class = 8; break;
-				case 'WARLOCK':$rb_class = 9; break;
-				case 'WARRIOR':$rb_class = 10; break;
+				case 'DEATHKNIGHT': $rb_class = 1; break;
+				case 'DRUID':		$rb_class = 2; break;
+				case 'HUNTER':		$rb_class = 3; break;
+				case 'MAGE':		$rb_class = 4; break;
+				case 'PALADIN':		$rb_class = 5; break;
+				case 'PRIEST':		$rb_class = 6; break;
+				case 'ROGUE':		$rb_class = 7; break;
+				case 'SHAMAN':		$rb_class = 8; break;
+				case 'WARLOCK':		$rb_class = 9; break;
+				case 'WARRIOR':		$rb_class = 10; break;
 				default: $rb_race = 0;
 			} $arrData['unit']['class'] = $rb_class;
 			
@@ -89,10 +101,37 @@ if(!class_exists('wow_arsenal')){
 			
 			
 			
+			/* ACHTUNG bei den PROPERTIES
+				--- beachte index =
+					ATTRIBUTE -> http://wowwiki.wikia.com/API_UnitStat
+					COMBAT -> http://wow.gamepedia.com/API_GetCombatRating
+					RESIST -> http://wowwiki.wikia.com/API_UnitResistance
 			
 			
+			BERUFE -- localization
 			
 			
+			switch($rb_profs = $arrData['professions']){
+				case 171: $rb_profs = 1, break;
+				case 186: $rb_profs = 2, break;
+				case 202: $rb_profs = 3, break;
+				case 773: $rb_profs = 4, break;
+				case 755: $rb_profs = 5, break;
+				case 182: $rb_profs = 6, break;
+				case 393: $rb_profs = 7, break;
+				case 165: $rb_profs = 8, break;
+				case 164: $rb_profs = 9, break;
+				case 197: $rb_profs = 10, break;
+				case 333: $rb_profs = 11, break;
+				case 356: $rb_profs = 12, break;
+				case 794: $rb_profs = 13, break;
+				case 129: $rb_profs = 14, break;
+				case 184: $rb_profs = 15, break;
+				default: $rb_profs = 0;
+			}
+			
+			
+			*/
 			
 			
 			
