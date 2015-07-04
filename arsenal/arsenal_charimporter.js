@@ -33,6 +33,11 @@ function parseDump2Array(str){
 	return objJSONdump;
 }
 
+function delDump(obj, dump){
+	$('#read_chardump input[name="chardump['+dump+']"]').remove();
+	$(obj).parent().remove();
+}
+var countAllDumps = 0;
 function readChardump(files){
 	for (var i = 0, f; f = files[i]; i++){
 		if (!f.name.substr(-3).match('lua')){ continue; }
@@ -43,14 +48,14 @@ function readChardump(files){
 			return function(e){
 				chardump = e.target.result;
 				
-				
 				chardump = parseDump(chardump);
-				
-				$('#read_chardump').append('<input name="chardump['+i+']" type="input" />');
-				$('#read_chardump input[name="chardump['+i+']"]').val(chardump);
-				
 				objJSONdump = parseDump2Array(chardump)
-				$('#list_chardump').append('<li><strong>'+objJSONdump.global.name+'</strong>, erstellt am '+objJSONdump.global.date+'</li>');
+				
+				$('#read_chardump').append('<input name="chardump['+countAllDumps+']" type="input" />');
+				$('#read_chardump input[name="chardump['+countAllDumps+']"]').val(chardump);
+				$('#list_chardump').append('<li><strong>'+objJSONdump.global.name+'</strong>, '+objJSONdump.global.date+'<i class="fa fa-times fa-lg hand" onclick="delDump(this, '+countAllDumps+');"></i></li>');
+				
+				countAllDumps++;
 			};
 		})(f);
 		

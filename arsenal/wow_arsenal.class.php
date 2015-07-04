@@ -51,15 +51,43 @@ if(!class_exists('wow_arsenal')){
 				$arrData = json_decode($jsonChardump, true);
 			}
 			
+			//rebuild arrays and array_values
+			switch($rb_race = $arrData['global']['race']){
+				case 'Gnome':	 $rb_race = 1; break;
+				case 'Human':	 $rb_race = 2; break;
+				case 'Dwarf':	 $rb_race = 3; break;
+				case 'NightElf': $rb_race = 4; break;
+				case 'Troll':	 $rb_race = 5; break;
+				case 'Scourge':	 $rb_race = 6; break;
+				case 'Orc':		 $rb_race = 7; break;
+				case 'Tauren':	 $rb_race = 8; break;
+				case 'Draenei':  $rb_race = 9; break;
+				case 'BloodElf': $rb_race = 10; break;
+				case 'Worgen':	 $rb_race = 11; break;
+				case 'Goblin':	 $rb_race = 12; break;
+				default: $rb_race = 0;
+			} $arrData['global']['race'] = $rb_race;
+			
+			switch($rb_class = $arrData['unit']['class']){
+				case 'DEATHKNIGHT': $rb_class = 1; break;
+				case 'DRUID':		$rb_class = 2; break;
+				case 'HUNTER':		$rb_class = 3; break;
+				case 'MAGE':		$rb_class = 4; break;
+				case 'PALADIN':		$rb_class = 5; break;
+				case 'PRIEST':		$rb_class = 6; break;
+				case 'ROGUE':		$rb_class = 7; break;
+				case 'SHAMAN':		$rb_class = 8; break;
+				case 'WARLOCK':		$rb_class = 9; break;
+				case 'WARRIOR':		$rb_class = 10; break;
+				default: $rb_race = 0;
+			} $arrData['unit']['class'] = $rb_class;
+			
+			
+			
+			
 			d($arrData);die;
 			
-			/*
 			
-			,\"global\":{ 
-			
-			\"},\"
-			
-			*/
 			
 			
 			

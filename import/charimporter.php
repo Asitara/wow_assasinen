@@ -69,9 +69,21 @@ class charImporter extends page_generic {
 			.drag-drop-inside p.drag-drop-info {
 				font-size: 20px;
 			}
-			#plupload-browse-button [
+			#plupload-browse-button {
 				position: relative;
 				z-index: 1;
+			}
+			
+			.importer-main-frame {
+				margin: 15px auto 0px;
+				width: 250px;
+				text-align: center;
+			}
+			#list_chardump li {
+				margin: 5px 0;
+				padding: 2px 4px;
+				border: 1px solid #666;
+				text-align: left;
 			}
 		');
 		
@@ -88,11 +100,12 @@ class charImporter extends page_generic {
 				</div>
 			</div>
 			<div id="read_chardump"></div>
-			<ul id="list_chardump"></ul>
-			</br>
-			<p style="margin: 15px auto 0px; width: 250px; text-align: center;">
+			<div class="importer-main-frame">
+				
+				<ul id="list_chardump"></ul>
+				</br>
 				<button type="submit" name="submit" align="center"><i class="fa fa-download"></i> '.$this->game->glang('uc_import_forw').'</button>
-			</p>
+			</div>
 		';
 		return $hmtlout;
 	}
