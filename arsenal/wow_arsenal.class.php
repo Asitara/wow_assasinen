@@ -29,15 +29,22 @@ if( !defined( 'EQDKP_INC' ) ) {
 if(!class_exists('wow_arsenal')){
 	class wow_arsenal extends gen_class {
 		public function __construct(){
+			
 			$this->this_game	= $this->game->get_game();
-			#$this->races= $this->game->glang('races');
-			#$this->classes= $this->game->glang('classes');
+			
+			$this->lang_files = array(
+				'german'	=> $this->root_path.'games/'.$this->this_game.'/arsenal/language/german/lang_main.php',
+				'english'	=> $this->root_path.'games/'.$this->this_game.'/arsenal/language/english/lang_main.php', 
+			);
+			$this->init_lang();
 		}
 
-		protected $this_game	= 'wow_assasinen';
-		#private $races= array();
-		#protected $classes= array();
 
+		protected $this_game	= 'wow_assasinen';
+		private $lang_files		= array('german', 'english');
+		
+		
+		
 
 		public function add(){}
 
@@ -52,6 +59,13 @@ if(!class_exists('wow_arsenal')){
 			}
 			
 			//rebuild arrays and array_values
+			switch($rb_locale = $arrData['global']['locale']){
+				case 'deDE':	 $rb_locale = 'german'; break;
+				case 'enUS':	 $rb_locale = 'english'; break;
+				case 'enGB':	 $rb_locale = 'english'; break;
+				default: $rb_locale = $this->config->get('uc_data_lang');
+			} $arrData['global']['locale'] = $rb_locale;
+			
 			switch($rb_race = $arrData['global']['race']){
 				case 'Gnome':	 $rb_race = 1; break;
 				case 'Human':	 $rb_race = 2; break;
@@ -68,7 +82,7 @@ if(!class_exists('wow_arsenal')){
 				default: $rb_race = 0;
 			} $arrData['global']['race'] = $rb_race;
 			
-			switch($rb_class = $arrData['unit']['class']){
+			switch($rb_class = $arrData['global']['class']){
 				case 'DEATHKNIGHT': $rb_class = 1; break;
 				case 'DRUID':		$rb_class = 2; break;
 				case 'HUNTER':		$rb_class = 3; break;
@@ -79,94 +93,11 @@ if(!class_exists('wow_arsenal')){
 				case 'SHAMAN':		$rb_class = 8; break;
 				case 'WARLOCK':		$rb_class = 9; break;
 				case 'WARRIOR':		$rb_class = 10; break;
-				default: $rb_race = 0;
-			} $arrData['unit']['class'] = $rb_class;
+				default: $rb_class = 0;
+			} $arrData['global']['class'] = $rb_class;
 			
 			
-			
-			
-			d($arrData);die;
-			
-			
-			
-			
-			
-			//rebuild arrays and array_values
-			$arrData['global']['date']= $this->time->fromformat($arrData['global']['date'], 'M d Y');
-			
-			switch($rb_race = $arrData['unit']['race']){
-				case 'Gnome':	 $rb_race = 1; break;
-				case 'Human':	 $rb_race = 2; break;
-				case 'Dwarf':	 $rb_race = 3; break;
-				case 'NightElf': $rb_race = 4; break;
-				case 'Troll':	 $rb_race = 5; break;
-				case 'Scourge':	 $rb_race = 6; break;
-				case 'Orc':		 $rb_race = 7; break;
-				case 'Tauren':	 $rb_race = 8; break;
-				case 'Draenei':  $rb_race = 9; break;
-				case 'BloodElf': $rb_race = 10; break;
-				case 'Worgen':	 $rb_race = 11; break;
-				case 'Goblin':	 $rb_race = 12; break;
-				default: $rb_race = 0;
-			} $arrData['unit']['race'] = $rb_race;
-			
-			switch($rb_class = $arrData['unit']['class']){
-				case 'DEATHKNIGHT': $rb_class = 1; break;
-				case 'DRUID':		$rb_class = 2; break;
-				case 'HUNTER':		$rb_class = 3; break;
-				case 'MAGE':		$rb_class = 4; break;
-				case 'PALADIN':		$rb_class = 5; break;
-				case 'PRIEST':		$rb_class = 6; break;
-				case 'ROGUE':		$rb_class = 7; break;
-				case 'SHAMAN':		$rb_class = 8; break;
-				case 'WARLOCK':		$rb_class = 9; break;
-				case 'WARRIOR':		$rb_class = 10; break;
-				default: $rb_race = 0;
-			} $arrData['unit']['class'] = $rb_class;
-			
-			$arrData['title'];
-			
-			
-			
-			
-			/* ACHTUNG bei den PROPERTIES
-				--- beachte index =
-					ATTRIBUTE -> http://wowwiki.wikia.com/API_UnitStat
-					COMBAT -> http://wow.gamepedia.com/API_GetCombatRating
-					RESIST -> http://wowwiki.wikia.com/API_UnitResistance
-			
-			
-			BERUFE -- localization
-			
-			
-			switch($rb_profs = $arrData['professions']){
-				case 171: $rb_profs = 1, break;
-				case 186: $rb_profs = 2, break;
-				case 202: $rb_profs = 3, break;
-				case 773: $rb_profs = 4, break;
-				case 755: $rb_profs = 5, break;
-				case 182: $rb_profs = 6, break;
-				case 393: $rb_profs = 7, break;
-				case 165: $rb_profs = 8, break;
-				case 164: $rb_profs = 9, break;
-				case 197: $rb_profs = 10, break;
-				case 333: $rb_profs = 11, break;
-				case 356: $rb_profs = 12, break;
-				case 794: $rb_profs = 13, break;
-				case 129: $rb_profs = 14, break;
-				case 184: $rb_profs = 15, break;
-				default: $rb_profs = 0;
-			}
-			
-			
-			*/
-			
-			
-			
-			
-			
-			
-			//sort and generate new array
+			/*  sort and generate new array
 			$data_global	= $arrData['global'];
 			$data_unit		= $arrData['unit'];
 			$data_title		= $arrData['title'];
@@ -188,20 +119,15 @@ if(!class_exists('wow_arsenal')){
 				'glyphs'	=> $data_glyphs,
 				'creature'	=> $data_creature,
 				'awards'	=> $data_awards,
-			);
+			);  */
+			
 			return $arrData;
 		}
-	
-			
-			
-			/*
-			// So lesen und verarbeiten wir die direkte Dateieinlese
-			$jsonChardump = file_get_contents('http://127.0.0.1/Chardump.json');
-			$jsonChardump = preg_replace("/\\\'/", "'", $jsonChardump);
-			$jsonChardump = stripslashes($jsonChardump);
-			json_decode($jsonChardump, true);
-			*/
-			
+		
+		
+		
+		
+		
 		
 
 
@@ -313,6 +239,29 @@ if(!class_exists('wow_arsenal')){
 		}
 
 
+		/**
+		* Init and install all lang files
+		* @param: (string)	$load_file
+		* @param: (bool)	
+		*/
+		private function init_lang(){
+			$lang	= array();
+			foreach($this->lang_files as $language => $file){
+				include_once($file);
+				$this->user->add_lang($language, $lang);
+			}
+		}
+
+		/**
+		* Read the a specific language and return as array
+		* @param: (string)	$language
+		* @return: Array	
+		*/
+		private function get_lang($language){
+			$lang	= array();
+			include($this->lang_files[$language]);
+			return $lang;
+		}
 
 
 

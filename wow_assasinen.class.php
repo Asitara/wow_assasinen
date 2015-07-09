@@ -190,6 +190,7 @@ if(!class_exists('wow_assasinen')){
 			
 			// Meine Klasse und mein benötigtes PDH Modul
 			registry::add_class('wow_arsenal', $this->path.'arsenal/', 'arsenal');
+			$this->pdh->register_read_module('arsenal_character', $this->path.'pdh/read/arsenal_character');
 			$this->pdh->register_write_module('arsenal_character', $this->path.'pdh/write/arsenal_character');
 			
 			$this->importers = array(
@@ -346,7 +347,7 @@ if(!class_exists('wow_assasinen')){
 					'type'			=> 'dropdown',
 					'category'		=> 'character',
 					'lang'			=> 'uc_gender',
-					'options'		=> array('male' => 'uc_male', 'female' => 'uc_female'),
+					'options'		=> array(2 => 'uc_male', 3 => 'uc_female'),
 					'tolang'		=> true,
 					'undeletable'	=> true,
 					'sort'			=> 3

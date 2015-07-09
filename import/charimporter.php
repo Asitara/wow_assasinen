@@ -26,12 +26,7 @@ include_once($eqdkp_root_path.'common.php');
 class charImporter extends page_generic {
 	
 	public function __construct() {
-		parent::__construct(false, array(
-			#'massupdate'		=> array('process' => 'perform_massupdate'),
-			#'resetcache'		=> array('process' => 'perform_resetcache'),
-			#'ajax_massupdate'	=> array('process' => 'ajax_massupdate'),
-			#'ajax_mudate'		=> array('process' => 'ajax_massupdatedate'),
-		), array());
+		parent::__construct(false, array(), array());
 		
 		
 		$this->this_game = $this->game->get_game();
@@ -43,6 +38,8 @@ class charImporter extends page_generic {
 	}
 
 	protected $this_game;
+	private $form_build = false;
+	public static $shortcuts = array('form' => array('form', array('importchar')));
 
 
 	public function perform_step0(){
@@ -111,124 +108,119 @@ class charImporter extends page_generic {
 	}
 
 
-
 	public function perform_step1(){
+		$response = array();
+		$arrMemberIDs = $this->pdh->aget('member', 'name', 0, array($this->pdh->get('member', 'id_list')));
+		
+		foreach($this->in->getArray('chardump', 'string') as $dumps){
+			$arrData = $this->arsenal->parse_chardump($dumps);
+			
+			foreach($arrMemberIDs as $id => $name){
+				if($arrData['global']['name'] == $name){
+					$is_mine = ($this->pdh->get('member', 'userid', array($id)) == $this->user->data['user_id'])? true : false;
+					if($is_mine){
+						// char upload if is_mine
+						// return anything, so we can say uups we got an error^^
+						$upload_status = $this->pdh->put('arsenal_character', 'add_upd', array($id, $arrData, array('overtakechar' => 1, 'picture' => '', 'notes' => '')));
+					}else{ $upload_status = false; }
+				}else{
+					// char upload
+					$upload_status = $this->pdh->put('arsenal_character', 'add_upd', array($id, $arrData, array('overtakechar' => 1, 'picture' => '', 'notes' => '')));
+				}
+			}
+			
+			$response[$arrData['global']['name']] = $upload_status;
+		}
+		
+		// upload sequence done, check the response
+		$hmtlout = ' ';
+		
+		foreach($response as $name => $status){
+			if(!$status){
+				$hmtlout .= '
+					<div class="infobox infobox-large infobox-red clearfix">
+						<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> '.$name.', der Charakter konnte nicht importiert werden.</div>
+					</div>
+				';
+			}else{
+				$hmtlout .= '
+					<div class="infobox infobox-large infobox-green clearfix">
+						<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> '.$name.', wurde erfolgreich importiert...</div>
+					</div>
+				';
+			}
+		}
+		
+		return $hmtlout;
+	}
+
+
+
+
+################################################################################
+#
+#			$data = $this->form->return_values();
+#
+################################################################################
+
+
+##### HIER könnte man noch eine "sichte und prüfe deine daten" wo dann notiz character bild und die core sachen mitgeliefert werden,.. einbauen..
+	public function perform_step3(){
+		$response = array();
+		$arrMemberIDs = $this->pdh->aget('member', 'name', 0, array($this->pdh->get('member', 'id_list')));
+		
 		if(!count($this->in->getArray('chardump', 'string')) >= 1) return;
 		foreach($this->in->getArray('chardump', 'string') as $dumps){
 			$arrData = $this->arsenal->parse_chardump($dumps);
 			
-			/*$arrMemberIDs = $this->pdh->aget('member', 'name', 0, array($this->pdh->get('member', 'id_list')));
 			foreach($arrMemberIDs as $id => $name){
-				if($arrData['unit']['name'] != $name){
-					$this->pdh->put('arsenal_character', 'add', array(
-						$id,
-						$arrData['unit']['name'],
-						$arrData['unit']['race'],		// convert to raceID
-						$arrData['unit']['gender'],
-						$arrData['unit']['class'],		// convert to classID
-						$arrData['unit']['level'],
-						$arrData['unit']['name'],
-						'',								// empty to get current time
-						$arrData['title'],				// convert to json --> parse before name to lang_var
-						$arrData['rep'],				// convert to json --> parse before name to lang_var
-						$arrData['currency'],			// convert to json --> parse before name to lang_var
-						$arrData['spells'],				// unset cause chardump error
-						$arrData['glyphs'],				// unset cause chardump error
-						$arrData['mounts'],				// build new array from data['creature']
-						$arrData['critters'],			// build new array from data['creature']
-						$arrData['awards']				// build new array from data['awards']  --- see awards_achievements, it beware new methods
-					));
+				if($arrData['global']['name'] == $name){
+					$is_mine = ($this->pdh->get('member', 'userid', array($id)) == $this->user->data['user_id'])? true : false;
+					if($is_mine){
+						// char upload if is_mine
+						// return anything, so we can say uups we got an error^^
+						$upload_status = true; //-- Hier ist eig die antwort des uploads
+					}else{ $upload_status = false; }
+				}else{
+					// char upload
+					$upload_status = true; //-- Hier ist eig die antwort des uploads
 				}
-				
-			}*/
+			}
 			
-			d('___________________________________________________________________________________________________');
-			d($arrData);
+			$response[$arrData['global']['name']] = $upload_status;
 		}
 		
+		// upload sequence done, check the response
+		$hmtlout = ' ';
 		
-		/*
-		if($this->in->get('member_id', 0) > 0){
-			// We'll update an existing one...
-			$isindatabase	= $this->in->get('member_id', 0);
-			$isMemberName	= $this->pdh->get('member', 'name', array($isindatabase));
-			$isServerName	= $this->config->get('servername');
-			$is_mine		= ($this->pdh->get('member', 'userid', array($isindatabase)) == $this->user->data['user_id']) ? true : false;
-		}else{
-			// Check for existing member name
-			$isindatabase	= $this->pdh->get('member', 'id', array($this->in->get('charname'), array('servername' => $this->in->get('servername'))));
-			$hasuserid		= ($isindatabase > 0) ? $this->pdh->get('member', 'userid', array($isindatabase)) : 0;
-			$isMemberName	= $this->in->get('charname');
-			$isServerName	= $this->in->get('servername');
-			if($this->user->check_auth('a_charmanager_config', false)){
-				$is_mine	= true;			// We are an administrator, its always mine..
+		foreach($response as $name => $status){
+			if(!$status){
+				$hmtlout .= '
+					<div class="infobox infobox-large infobox-red clearfix">
+						<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> '.$name.', der Charakter konnte nicht importiert werden.</div>
+					</div>
+				';
 			}else{
-				$is_mine	= (($hasuserid > 0) ? (($hasuserid == $this->user->data['user_id']) ? true : false) : true);	// we are a normal user
+				$hmtlout .= '
+					<div class="infobox infobox-large infobox-green clearfix">
+						<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> '.$name.', wurde erfolgreich importiert...</div>
+					</div>
+				';
 			}
 		}
 		
-		if($is_mine){
-			// Load the Armory Data
-			$chardata	= $this->game->obj['daybreak']->character($isMemberName, $isServerName, true);
-			$cdata = $chardata['character_list'][0];
-
-			// Basics
-			$hmtlout	.= new hhidden('member_id', array('value'=>$isindatabase));
-			$hmtlout	.= new hhidden('member_name', array('value'=>$isMemberName));
-			$hmtlout	.= new hhidden('member_level', array('value'=>$cdata['type']['level']));
-			$hmtlout	.= new hhidden('gender', array('value' => ucfirst($cdata['type']['gender'])));
-			$hmtlout	.= new hhidden('member_race_id', array('value'=>$this->game->obj['daybreak']->ConvertID((int)$cdata['type']['raceid'], 'int', 'races')));
-			$hmtlout	.= new hhidden('member_class_id', array('value'=>$this->game->obj['daybreak']->ConvertID((int)$cdata['type']['classid'], 'int', 'classes')));
-			$hmtlout	.= new hhidden('guild', array('value'=>$cdata['guild']['name']));
-			$hmtlout	.= new hhidden('picture', array('value'=>$cdata['id']));
-			$hmtlout	.= new hhidden('servername', array('value' => $cdata['locationdata']['world']));
-			
-			
-			// viewable Output
-			if(!isset($chardata['status'])){
-				$charicon = $this->game->obj['daybreak']->characterIcon($cdata['id']);
-				if ($charicon == "") $charicon = $this->server_path.'images/global/avatar-default.svg';
-				$hmtlout	.= '
-				<div class="infobox infobox-large infobox-red clearfix">
-					<i class="fa fa-exclamation-triangle fa-4x pull-left"></i> '.$this->game->glang('uc_charfound3').'</div>
-				</div>
-
-				<fieldset class="settings mediumsettings">
-					<dl>
-						<dt><label><img src="'.$charicon.'" name="char_icon" alt="icon" height="100" align="middle" /></label></dt>
-						<dd>
-							'.sprintf($this->game->glang('uc_charfound'), $isMemberName).'
-						</dd>
-					</dl>
-					<dl>';
-				if(!$isindatabase){
-					if($this->user->check_auth('u_member_conn', false)){
-						$hmtlout	.= '<dt>'.$this->user->lang('overtake_char').'</dt><dd>'.new hradio('overtakeuser', array('value' => 1)).'</dd>';
-					}else{
-						$hmtlout	.= '<dt>'.$this->user->lang('overtake_char').'</dt><dd>'.new hradio('overtakeuser', array('value' => 1, 'disabled' => true)).'</dd>';
-						$hmtlout	.= new hhidden('overtakeuser', array('value' => '1'));
-					}
-				}
-				$hmtlout	.= '
-					</dl>
-					</fieldset>';
-				$hmtlout		.= '<center>
-										<button type="submit" name="submiti"><i class="fa fa-refresh"></i> '.$this->game->glang('uc_prof_import').'</button>
-									</center>';
-			}else{
-				$hmtlout		.= '<div class="errorbox roundbox">
-										<i class="fa fa-exclamation-triangle fa-4x pull-left"></i><b>WARNING: </b> '.$chardata['reason'].'</div>
-									</div>';
-			}
-		}else{
-			$hmtlout	.= '<div class="errorbox roundbox">
-								<i class="fa fa-exclamation-triangle fa-4x pull-left"></i>'.$this->game->glang('uc_notyourchar').'</div>
-							</div>';
-		}*/
 		return $hmtlout;
 	}
 
-	public function perform_step2(){
+
+################################################################################
+
+
+################################################################################
+
+
+
+	public function perform_step4(){
 		$data = array(
 			'name'				=> $this->in->get('member_name'),
 			'level'				=> $this->in->get('member_level', 0),

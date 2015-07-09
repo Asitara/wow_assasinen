@@ -24,6 +24,29 @@ if (!defined('EQDKP_INC')){
 }
 
 $lang = array(
+
+
+	'currencies' => array(
+		0	=> 'Unknown',
+		1	=> 'Valor Points',
+		2	=> 'Justice Points',
+		3	=> 'Essence of Corrupted Deathwing',
+		4	=> 'Mote of Darkness',
+		5	=> 'Conquest Points',
+		6	=> 'Honor Points',
+		7	=> 'Tol Barad Commendation',
+		8	=> 'Chef\'s Award',
+		9	=> 'Dalaran Cooking Award',
+		10	=> 'Illustrious Jewelcrafter\'s Token',
+		11	=> 'Dalaran Jewelcrafter\'s Token',
+		12	=> 'Mark of the World Tree',
+		13	=> 'Darkmoon Prize Ticket',
+		14	=> 'Champion\'s Seal',
+	),
+
+
+
+
 	'titles' => array(
 		1	=> 'Private ',
 		2	=> 'Corporal ',

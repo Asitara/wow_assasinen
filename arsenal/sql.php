@@ -32,19 +32,24 @@ $arsenalSQL = array(
 
 	'install'   => array(
 		1 => "CREATE TABLE `__arsenal_char` (
-			`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-			`name` TEXT COLLATE utf8_bin NOT NULL,
-			`description` TEXT COLLATE utf8_bin NULL,
-			`sort_id` INT(10) UNSIGNED NOT NULL DEFAULT '0',
-			`active` TINYINT(3) UNSIGNED NULL DEFAULT '0',
-			`special` TINYINT(3) UNSIGNED NULL DEFAULT '0',
-			`points` INT(10) NULL DEFAULT '0',
-			`dkp` FLOAT(11,2) NULL DEFAULT NULL,
-			`icon` TEXT NULL COLLATE 'utf8_bin',
-			`icon_colors` TEXT NULL COLLATE 'utf8_bin',
-			`module` TEXT NULL COLLATE 'utf8_bin',
-			`module_set` TEXT NULL COLLATE 'utf8_bin',
-			`event_id` INT(10) UNSIGNED NULL DEFAULT '0',
+			`id` SMALLINT(5) NOT NULL,
+			`name` VARCHAR(30) NOT NULL,
+			`title` INT(11) NULL DEFAULT NULL,
+			`gender` INT(11) NOT NULL DEFAULT '2',
+			`race` SMALLINT(3) NOT NULL DEFAULT '0',
+			`class` SMALLINT(3) NOT NULL DEFAULT '0',
+			`level` SMALLINT(3) NOT NULL DEFAULT '85',
+			`last_update` INT(10) NULL DEFAULT NULL,
+			`stats` TEXT NULL,
+			`titles` TEXT NULL,
+			`reputation` TEXT NULL,
+			`currencies` TEXT NULL,
+			`talents` TEXT NULL,
+			`professions` TEXT NULL,
+			`mounts` TEXT NULL,
+			`critters` TEXT NULL,
+			`inventory` TEXT NULL,
+			`achievements` TEXT NULL
 			PRIMARY KEY (`id`)
 		) DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 		",
