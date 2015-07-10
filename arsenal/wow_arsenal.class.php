@@ -44,10 +44,6 @@ if(!class_exists('wow_arsenal')){
 		private $lang_files		= array('german', 'english');
 		
 		
-		
-
-		public function add(){}
-
 		public function parse_chardump($jsonChardump){
 			//parse to valid json and decode it
 			if(!empty($jsonChardump)){
@@ -125,12 +121,6 @@ if(!class_exists('wow_arsenal')){
 		}
 		
 		
-		
-		
-		
-		
-
-
 		/**
 		* Fetch Guild Informations about the progress,.. from Frostmourne
 		* @return: Array
@@ -262,6 +252,19 @@ if(!class_exists('wow_arsenal')){
 			include($this->lang_files[$language]);
 			return $lang;
 		}
+
+
+
+	#################################################################################################
+	#																								#
+	#								Character Profile Functions										#
+	#																								#
+	#################################################################################################
+
+	public function character_main_page(){
+		
+	}
+
 
 
 

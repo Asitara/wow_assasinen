@@ -1,0 +1,658 @@
+/* CSS Document */
+.color-c3, .color-c3 a, .color-g2 {						/* ka- bisher wurde color-g2 nie verwendet */
+    color: #AAD372 !important;							/* wenn möglich ändenr zu class_2 , siehe btnet style */
+}
+.color-c3 a.tip, .border-c3 {							/* diese a.tip sind etwas dunkler wie die eig klasse!! */
+    border-color: #556A39;								/* findet man am charnamen etc */
+}
+.color-c3 a.tip {
+    border-bottom: 1px dotted #556A39;
+}
+
+
+
+/* PROFILE INFO */
+.profile-info-anchor, .profile-info {
+    width: 700px;
+}
+.profile-wrapper-horde .profile-info-anchor {
+    background-image: url("../images/character/summary/sidebar-bg-horde.png");
+}
+.profile-info-anchor {
+    position: relative;
+    z-index: 1;
+    background: transparent none no-repeat scroll 0% 0%;
+    height: 218px;
+}
+
+.profile-info {
+    line-height: normal;
+    letter-spacing: -0.05em;
+    position: absolute;
+    left: 25px;
+    top: 45px;
+}
+.profile-info .name {
+    float: left;
+    font-size: 56px;
+    font-weight: bold;
+    color: #FFF;
+    line-height: 1.1em;
+    position: relative;
+    left: -3px;
+    letter-spacing: -0.05em;
+}
+.profile-info .title-guild {
+    float: left;
+    padding-left: 11px;
+    padding-top: 10px;
+}
+.profile-info .title-guild .title {
+    font-size: 14px;
+    color: #E0E0E0;
+    line-height: 25px;
+}
+.profile-info .title-guild .guild {
+    line-height: 15px;
+}
+.profile-info .under-name {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 14px;
+    letter-spacing: normal;
+}
+.profile-info .level strong {
+    font-family: "Arial Black",Arial,sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+}
+.profile-info .comma {
+    color: #CCC;
+}
+.profile-wrapper-horde .realm, .profile-wrapper-horde .realm a {
+    color: #B30000;
+}
+.profile-info .realm {
+    border-bottom: 0px none;
+}
+.profile-info .achievements {
+    margin-top: 20px;
+}
+.profile-info .achievements a {
+    font-size: 20px;
+    font-family: "Arial Black",Arial,sans-serif;
+    font-weight: 900;
+    color: #FFF;
+    padding-left: 11px;
+    background: transparent url("../images/icons/achievements.gif") no-repeat scroll left 7px;
+    line-height: 23px;
+}
+
+.tip {
+    border-bottom: 1px dotted #6A5336;
+    cursor: help;
+}
+.clear-divider {
+    clear: both;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* SIDEBAR MENU */
+.profile-sidebar-anchor {
+    position: relative;
+    height: 0px;
+    width: 0px;
+    float: left;
+}
+.profile-sidebar-outer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.profile-sidebar-inner {
+    width: 230px;
+    height: 684px;
+}
+
+ul.profile-sidebar-menu, ul.profile-sidebar-menu li {
+    margin: 30px 0;
+	height: 0px;
+	background: linear-gradient(to right,
+		rgba(255, 255, 255, 0.5) 0%,
+		rgba(255, 252, 252, 0.4) 40%,
+		rgba(255, 255, 255, 0.4) 50%,
+		rgba(255, 255, 255, 0.25) 60%,
+		rgba(255, 255, 255, 0) 100%
+	) repeat scroll 0% 0% transparent;
+}
+ul.profile-sidebar-menu {
+    width: 196px;
+    margin: 14px 0px 0px 25px;
+    padding-bottom: 1px;
+    font-size: 13px;
+}
+ul.profile-sidebar-menu li {
+    padding-top: 1px;
+    white-space: nowrap;
+}
+ul.profile-sidebar-menu li.active a {
+    color: #FFF;
+    font-weight: bold;
+}
+ul.profile-sidebar-menu a {
+    width: 160px;
+}
+ul.profile-sidebar-menu a {
+    display: block;
+    padding-left: 3px;
+}
+ul.profile-sidebar-menu a .arrow {
+    line-height: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+}
+ul.profile-sidebar-menu a.has-submenu .arrow {
+    background: transparent url("../images/profile/sidebar-menu-arrows.png") no-repeat scroll right 9px;
+}
+ul.profile-sidebar-menu li.disabled a, ul.profile-sidebar-menu li.disabled a span {
+    color: #8B5F03 !important;
+}
+
+.summary-sidebar-links {
+    padding: 35px 0px 0px 25px;
+}
+.summary-sidebar-button {
+    float: left;
+    margin-right: 10px;
+}
+a.summary-link-tools {
+    display: block;
+    width: 21px;
+    height: 21px;
+    background: transparent url("../../images/icons/tools-button.gif") no-repeat scroll 0% 0%;
+}
+.fansite-link {
+    width: 21px;
+    height: 21px;
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+    background: transparent url("../images/icons/goto-fansite-button.gif") no-repeat scroll 0% 0%;
+}
+
+/* PROFILE CONTENT */
+.profile-contents {
+    margin-left: 230px;
+    min-height: 807px;
+    padding-bottom: 40px;
+}
+.profile-contents {
+    margin-left: 0px;
+}
+.profile-contents, .profile-section {
+    padding: 0px;
+}
+
+/* PROFILE TOP -- sumary-top */
+.summary-top, .summary-top-right, .summary-top-inventory {
+    width: 762px;
+}
+.summary-top {
+    margin-left: 230px;
+    height: 700px;
+}
+.summary-top-right {
+    height: 148px;
+    position: relative;
+}
+ul.profile-view-options {
+    font-size: 12px;
+    float: right;
+    white-space: nowrap;
+}
+.summary-top-right ul.profile-view-options {
+    position: absolute;
+    right: 25px;
+    top: 56px;
+}
+
+ul.profile-view-options li {
+    float: right;
+    margin: 0px 0px 0px 17px;
+}
+ul.profile-view-options a {
+    display: block;
+    padding: 4px 0px 4px 19px;
+    line-height: 16px;
+}
+ul.profile-view-options li.current a {
+    color: #FFF;
+    font-weight: bold;
+}
+
+.summary-averageilvl {
+    position: absolute;
+    top: 91px;
+    right: 23px;
+    color: #FFF;
+}
+.summary-averageilvl div {
+    float: right;
+}
+.summary-averageilvl .rest {
+    color: #CCC;
+    white-space: nowrap;
+    font-size: 11px;
+    line-height: 13px;
+	text-transform: none;
+    margin-top: 3px;
+}
+.profile-wrapper-light .summary-averageilvl .rest {
+    color: #181818;
+}
+.summary-averageilvl .rest .equipped {
+    color: #FFF;
+}
+.summary-averageilvl .best {
+    font-size: 30px;
+    font-family: "Arial Black",Arial,sans-serif;
+    font-weight: 900;
+    line-height: 32px;
+    margin-right: 5px;
+    letter-spacing: -0.025em;
+    border-bottom: 0px none;
+}
+
+/* PROFILE CURRENT EQUIP summary-inventory */
+.summary-top-inventory {
+    height: 540px;
+    position: relative;
+    z-index: 1;
+}
+.summary-inventory-simple {
+    width: 612px;
+    height: 455px;
+    position: absolute;
+    left: 28px;
+    top: 1px;
+}
+.summary-inventory .slot, .summary-inventory a.item, .summary-inventory a.item .frame, .summary-inventory a.empty {
+    border-radius: 4px;
+}
+.summary-inventory .slot {
+    position: absolute;
+}
+.summary-inventory a.item {
+    width: 49px;
+    height: 49px;
+    display: block;
+    position: absolute;
+}
+.summary-inventory .slot, .summary-inventory a.item, .summary-inventory a.item .frame, .summary-inventory a.empty {
+    border-radius: 4px;
+}
+.summary-inventory a.item {
+    box-shadow: 0px 0px 8px #000;
+}
+.summary-inventory a.item img {
+    display: block;
+    width: 44px;
+    height: 44px;
+    padding: 3px 0px 0px 3px;
+}
+.summary-inventory a.empty {
+    width: 49px;
+    height: 49px;
+    display: block;
+    cursor: help;
+    position: absolute;
+    background: transparent url("../../images/character/summary/item-empty-bg.png") no-repeat scroll 0% 0%;
+    opacity: 0.33333;
+}
+
+/* empty slots */
+.summary-inventory .slot-1  a.empty { background-position: 1px 1px;    } /* Head */
+.summary-inventory .slot-2  a.empty { background-position: 1px -46px;  } /* Neck */
+.summary-inventory .slot-3  a.empty { background-position: 1px -93px;  } /* Shoulder */
+.summary-inventory .slot-16 a.empty,                                     /* Back */
+.summary-inventory .slot-5  a.empty { background-position: 1px -140px; } /* Chest */
+.summary-inventory .slot-19 a.empty { background-position: 1px -187px; } /* Tabard */
+.summary-inventory .slot-4  a.empty { background-position: 1px -234px; } /* Shirt */
+.summary-inventory .slot-9  a.empty { background-position: 1px -281px; } /* Wrist */
+.summary-inventory .slot-10 a.empty { background-position: 1px -328px; } /* Hands */
+.summary-inventory .slot-6  a.empty { background-position: 1px -375px; } /* Waist */
+.summary-inventory .slot-7  a.empty { background-position: 1px -422px; } /* Legs */
+.summary-inventory .slot-8  a.empty { background-position: 1px -469px; } /* Feet */
+.summary-inventory .slot-11 a.empty { background-position: 1px -516px; } /* Finger */
+.summary-inventory .slot-12 a.empty { background-position: 1px -563px; } /* Trinket */
+.summary-inventory .slot-21 a.empty { background-position: 1px -610px; } /* Main Hand */
+.summary-inventory .slot-22 a.empty { background-position: 1px -657px; } /* Off Hand */
+.summary-inventory .slot-15 a.empty { background-position: 1px -704px; } /* Ranged */
+.summary-inventory .slot-28 a.empty { background-position: 1px -751px; } /* Relic */
+
+
+/* PROFILE BOTTOM -- summary-bottom */
+.summary-bottom {
+    padding: 32px 40px;
+    background: transparent url("../../images/character/summary/bottom-bg.png") no-repeat scroll left top;
+    min-height: 655px;
+}
+.summary-bottom-right {
+    float: right;
+    width: 385px;
+}
+.summary-bottom-left {
+    margin-right: 367px;
+}
+
+/* talents */
+.summary-talents {
+    width: 333px;
+    float: right;
+    position: relative;
+    top: -9px;
+}
+.category, .subheader-3 {
+    font-size: 22px;
+    font-weight: normal;
+    letter-spacing: -0.05em;
+    color: #7E3406;
+}
+.summary-talents .category {
+    clear: both;
+    height: 38px;
+    line-height: 45px;
+}
+.summary-talents .title {
+    float: left;
+}
+.summary-talents .talent-export {
+    float: right;
+    font-size: 11px;
+    letter-spacing: 0px;
+    display: inline-block;
+    line-height: 49px;
+}
+.profile-box-simple {
+    border-top: 2px solid #4A240F;
+    padding: 11px 0px;
+    margin-top: 5px;
+}
+.summary-talents .profile-box-simple {
+    border-top: 0px none;
+    margin-top: 0px;
+}
+.summary-talents .talent-specs {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    border-bottom: 1px solid #3C1E12;
+    clear: both;
+}
+.summary-talents .talent-specs a.spec-0 {
+    float: left;
+    border-radius: 4px 0px 0px 4px;
+    margin: 2px 0px 2px 2px;
+}
+.summary-talents .talent-specs a.spec-1 {
+    float: right;
+    border-radius: 0px 4px 4px 0px;
+    margin: 2px 2px 2px 0px;
+}
+.summary-talents .talent-specs a.selected {
+    border-top: 1px solid transparent;
+    background: transparent none repeat scroll 0% 0%;
+    cursor: default;
+}
+.summary-talents .talent-specs .inner {
+    display: block;
+    padding: 8px 7px 0px 12px;
+    position: relative;
+}
+.summary-talents .talent-specs .frame, .summary-talents .talent-specs .frame .icon, .summary-talents .talent-specs .icon img {
+    border-radius: 2px;
+}
+.summary-talents .talent-specs .roles {
+    position: absolute;
+    left: 13px;
+    top: 25px;
+    width: 32px;
+    height: 16px;
+}
+.icon-dps, .icon-healing, .icon-healer, .icon-tank {
+    float: right;
+    width: 16px;
+    height: 16px;
+    background: transparent url("../images/icons/roles.png") no-repeat scroll 0% 0%;
+}
+.icon-dps { background-position: 0px 0px; }
+.icon-healer, .icon-healing { background-position: -16px 0px; }
+.icon-tank { background-position: -32px 0px; }
+
+.summary-talents .talent-build {
+    float: right;
+    width: 100%;
+    border-radius: 5px;
+    display: none;
+}
+.summary-talents .talent-build.selected {
+    display: block;
+}
+.summary-talents .talent-build .talents {
+    float: left;
+    margin: 25px 0px 26px 14px;
+}
+.summary-talents .talent-build .talents li {
+    margin-bottom: 6px;
+    height: 22px;
+}
+.summary-talents .talent-build .talents li .icon-frame, .summary-talents .talent-build .glyphs li .icon-frame {
+    border-radius: 1px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.45);
+}
+.summary-talents .talent-build .talents li .spell-name {
+    line-height: 22px;
+    color: #F3E6D0;
+    width: 128px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    cursor: default;
+}
+
+.summary-talents .talent-build .glyphs {
+    float: right;
+    width: 90px;
+    margin: 27px 19px;
+}
+.summary-talents .talent-build .glyphs ul {
+    margin-bottom: 24px;
+}
+.summary-talents .talent-build .glyphs li {
+    margin-bottom: 8px;
+}
+.summary-talents .talent-build .glyphs li h3 {
+    color: #71401F;
+    font-weight: normal;
+}
+
+/* stats */
+.summary-health-resource {
+    float: left;
+    margin: 0px 0px 10px;
+    color: #FFF;
+}
+.summary-health-resource li {
+    margin-right: 11px;
+    padding-left: 11px;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 3px;
+    background: transparent url("../../images/character/summary/health-resource-bg.png") repeat-x scroll 0% 0%;
+    cursor: help;
+    display: inline-block;
+    width: 157px;
+}
+.summary-health-resource li, .summary-health-resource span {
+    height: 23px;
+    line-height: 23px;
+}
+.summary-health-resource .health {
+    background-position: 0px 0px;
+    margin-bottom: 7px;
+    background-color: #248000;
+}
+.summary-health-resource .resource-1 {
+    background-position: 0px -69px;
+    background-color: #AB0000;
+}
+.summary-health-resource .resource-2 {
+    background-position: 0px -115px;
+    background-color: #964414;
+}
+.summary-health-resource .resource-3 {
+    background-position: 0px -46px;
+    background-color: #CB9501;
+}
+.summary-health-resource li, .summary-health-resource span {
+    height: 23px;
+    line-height: 23px;
+}
+.summary-health-resource .name {
+    font-size: 11px;
+}
+.summary-health-resource .value {
+    font-size: 12px;
+    font-family: "Arial Black",Arial,sans-serif;
+    font-weight: 900;
+    padding-left: 5px;
+}
+.summary-stats-profs-bgs {
+    clear: left;
+    padding: 0px 25px 23px;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+.summary-stats {
+    padding-top: 15px;
+}
+.summary-stats-simple-base, .summary-stats-advanced-base {
+    float: left;
+    margin-right: 27px;
+}
+.summary-stats-column {
+    width: 234px;
+    margin-top: 13px;
+    clear: left;
+    white-space: nowrap;
+}
+.summary-stats-column:first-child {
+    margin-top: 0px;
+}
+.summary-stats .summary-stats-column h4 {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 7px;
+    line-height: 21px;
+}
+.summary-stats-column li {
+    cursor: help;
+}
+.summary-stats-advanced li {
+    padding: 10px 0px;
+    border-top: 1px solid #2F1E18;
+}
+.summary-stats-column .name {
+    float: left;
+}
+.summary-stats-column .value {
+    float: right;
+    color: #F5EBD1;
+}
+.summary-stats-simple-other, .summary-stats-advanced-role {
+    float: left;
+}
+.summary-stats-end {
+    clear: left;
+}
+.summary-stats-simple {
+    line-height: normal;
+}
+a.summary-stats-toggler, a.summary-stats-toggler .inner {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    background: transparent url("../../images/character/summary/stats-expand-bg.gif") no-repeat scroll left top;
+    font-size: 11px;
+}
+a.summary-stats-toggler {
+    margin-top: 15px;
+    text-align: center;
+    padding-left: 10px;
+}
+a.summary-stats-toggler .inner {
+    background-position: right top;
+    padding-right: 10px;
+}
+
+/* PROFILE BOTTOM SUB -- summary-bottom-sub */
+.summary-bottom-sub-content {
+    border-top: 1px solid #3D1E0F;
+    margin-top: 19px;
+    padding-top: 45px;
+}
+.summary-bottom-right {
+    float: right;
+    width: 385px;
+}
+.summary-bottom-left {
+    margin-right: 367px;
+}
+
+/* rightside, activity */
+.summary-bottom .profile-recentactivity {
+    float: right;
+    width: 333px;
+}
+.profile-recentactivity .category {
+    font-size: 20px;
+}
+.summary-bottom-sub-content .category .view-more {
+    background: transparent url("../../images/icons/more-arrows-wide.gif") no-repeat scroll 100% 12px;
+    display: inline-block;
+    padding-right: 14px;
+}
+.activity-feed li {
+    background-repeat: no-repeat;
+    background-position: 5px 50%;
+    border-top: 1px solid #371B0D;
+    position: relative;
+    padding: 13px 0px 13px 29px;
+}
+.activity-feed li:first-child {
+    font-size: 16px;
+    padding-top: 2px;
+	border-top: 0px none;
+}
+.profile-linktomore {
+    text-align: right;
+    clear: both;
+}
+.profile-linktomore a {
+    font-size: 11px;
+    background: transparent none repeat scroll 0% 0%;
+}
+
+/* leftside, bg */
+.summary-battlegrounds {
+    width: 183px;
+    float: left;
+    margin-top: 4px;
+}
+
+
+
