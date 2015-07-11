@@ -4,17 +4,21 @@ infotooltip_js(); // init infotooltip
 
 /* Arsenal Page Controller */
 if($this->in->exists('professions')){
-	d($this->arsenal->fetch_guild_progress());
+	$this->arsenal->fetch_guild_progress();
 }
 elseif($this->in->exists('talents')){
 	
 }
-else{ $this->arsenal->character_main_page(); }
+else{
+	$this->arsenal->character_main_page();
+}
 
 
-$this->tpl->css_file($this->root_path.'games/wow_assasinen/arsenal/style.css');
+$this->tpl->css_file($this->root_path.'games/wow_assasinen/profiles/templates/profile.css');
+$this->tpl->css_file($this->root_path.'games/wow_assasinen/profiles/templates/summary.css');
 
-
+$this->tpl->css_file($this->root_path.'games/wow_assasinen/profiles/templates/pet.css');
+$this->tpl->css_file($this->root_path.'games/wow_assasinen/profiles/templates/zone.css');
 
 
 //class arsenal_profile_pageobject extends pageobject {
