@@ -41,8 +41,6 @@ ul.profile-sidebar-menu li::before, ul.profile-sidebar-menu li:last-child:after 
 /* profile layout */
 .profile-wrapper { color: #c09a67; }
 .profile-sidebar-anchor { float: left; width: 0; height: 0; position: relative; }
-.profile-sidebar-outer { position: absolute; left: 0; top: 0; }
-.profile-sidebar-inner { width: 230px; height: 684px; background: url("../images/profile/sidebar-bg.jpg") no-repeat; }
 .profile-contents { margin-left: 230px; min-height: 807px; padding-bottom: 40px; }
 .profile-section-header { padding: 11px 15px 0 15px; }
 .profile-section-header .category { font-size: 26px; padding-bottom: 9px; }
@@ -71,42 +69,17 @@ ul.profile-sidebar-menu li::before, ul.profile-sidebar-menu li:last-child:after 
 	
 	/* sidebar menu */
 	ul.profile-sidebar-menu { width: 196px; margin: 0 0 0 25px; padding-bottom: 1px; font-size:13px; }
-	ul.profile-sidebar-menu li { white-space: nowrap; }
-	ul.profile-sidebar-menu a { display: block; padding-left: 3px; }
-	ul.profile-sidebar-menu a.has-submenu .arrow { background: url("../images/profile/sidebar-menu-arrows.png") right 9px no-repeat; }
-	ul.profile-sidebar-menu a.has-submenu:hover .arrow { background-position: right -41px; }
-	ul.profile-sidebar-menu a.back-to .arrow { padding-right: 10px; font-style: normal; vertical-align: middle; background: url("../images/profile/sidebar-menu-arrows.png") 2px -91px no-repeat; padding-left: 18px; }
-	ul.profile-sidebar-menu a.back-to:hover .arrow { background-position: 2px -141px; }
+	ul.profile-sidebar-menu a { display: block; line-height: 30px; padding-left: 3px; }
 	ul.profile-sidebar-menu a:hover { background: linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.25) 10%, rgba(0, 0, 0, 0.3) 20%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0) 100% ); }
-	ul.profile-sidebar-menu a .arrow { display: block; line-height: 30px; text-overflow: ellipsis; white-space: nowrap; display: block; overflow: hidden; }
-	ul.profile-sidebar-menu a.vault .icon { padding-right: 16px; background: url("../images/profile/sidebar-lock.png") right -49px no-repeat; }
-	.opera ul.profile-sidebar-menu a.vault .icon { background-position: 95% -49px; }
-	ul.profile-sidebar-menu a.active { color: #fff; font-weight: bold; }
-	ul.profile-sidebar-menu a.active:hover { background: none; }
-	ul.profile-sidebar-menu a.active.has-submenu:hover .arrow { background-position: right 9px; }
-
 	ul.profile-sidebar-menu li.active a { color: #fff; font-weight: bold; }
 	ul.profile-sidebar-menu li.active a:hover { background: none; }
-	ul.profile-sidebar-menu li.active a.has-submenu:hover .arrow { background-position: right 9px; }
-
-	ul.profile-sidebar-menu li.disabled a { cursor: help; }
-	ul.profile-sidebar-menu li.disabled a, ul.profile-sidebar-menu li.disabled a span { color: #8B5F03 !important; }
-	ul.profile-sidebar-menu li.disabled a:hover .arrow { background-position: right 9px; }
-	ul.profile-sidebar-menu li.disabled .arrow { background: none !important; }
-	ul.profile-sidebar-menu li.disabled a.vault .icon { background-position: right 1px; }
-	.opera ul.profile-sidebar-menu li.disabled a.vault .icon { background-position: 95% 1px; }
-
-	ul.profile-sidebar-menu li .icon-frame { float: left; margin-top: 6px; margin-right: 5px; }
-	ul.profile-sidebar-menu li .indent { padding-left: 13px; }
-	ul.profile-sidebar-menu li .divider, ul.profile-sidebar-menu li .empty { display: block; }
-	ul.profile-sidebar-menu li .divider { line-height: 36px; font-size: 14px; color: #98542D; }
-	ul.profile-sidebar-menu li .empty { line-height: 30px; color: #694c30; }
+	ul.profile-sidebar-menu li.disabled a { color: #8B5F03; cursor: help; }
 
 	/* sidebar links */
-	ul.profile-sidebar-links { margin: 30px 0 0 25px; white-space: nowrap; }
+	/*ul.profile-sidebar-links { margin: 30px 0 0 25px; white-space: nowrap; }
 	ul.profile-sidebar-links li { font-size: 11px; line-height: 28px; }
 	ul.profile-sidebar-links a { color: #e75a00; padding: 5px 0; }
-	ul.profile-sidebar-links a:hover { color: white !important; }
+	ul.profile-sidebar-links a:hover { color: white !important; }*/
 
 /* view options */
 ul.profile-view-options { font-size: 12px; float: right; white-space: nowrap; }
@@ -135,7 +108,7 @@ ul.profile-view-options a .fa { color: #444; }
 	.profile-info .name { float: left; font-size: 56px; font-weight: bold; color: white; line-height: 1.1em; position: relative; left: -3px; letter-spacing: -0.05em; }
 	.profile-info .name a { color: white; }
 	.profile-info .under-name { padding-top: 1px; font-size: 14px; font-weight: normal; line-height: 14px; letter-spacing: normal }
-	.profile-info .level strong { font-family:"Arial Black", Arial, sans-serif; font-weight:900; font-size: 14px; }
+	.profile-info .under-name .level { font-family:"Arial Black", Arial, sans-serif; font-weight:900; font-size: 14px; }
 	.profile-info .realm { border-bottom: 0; }
 	.profile-info .realm a:hover { color: white; }
 	.profile-info .achievements { margin-top: 20px; }
