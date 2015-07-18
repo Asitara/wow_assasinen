@@ -10,7 +10,7 @@ elseif($this->in->exists('talents')){
 	
 }
 else{
-	$this->arsenal->character_main_page();
+	$content = $this->arsenal->character_main_page();
 }
 
 
@@ -19,6 +19,10 @@ $this->tpl->css_file($this->root_path.'games/wow_assasinen/profiles/templates/su
 
 $this->tpl->css_file($this->root_path.'games/wow_assasinen/profiles/templates/pet.css');
 $this->tpl->css_file($this->root_path.'games/wow_assasinen/profiles/templates/zone.css');
+
+
+$this->tpl->assign_var('ARSENAL_CHARACTER_CONTENT', $content);
+
 
 
 //class arsenal_profile_pageobject extends pageobject {

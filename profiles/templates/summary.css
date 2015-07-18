@@ -1,4 +1,3 @@
-@charset "utf-8";
 
 /* overrides */
 .profile-contents { margin-left: 0; }
@@ -19,10 +18,10 @@ ul.profile-sidebar-menu a { width: 160px; }
 .profile-wrapper-light .summary-top-right ul.profile-view-options a { background-image: url("../../images/icons/view-options-light.png"); }
 
 /* layout */
-.summary-top { margin-left: 230px; height: 700px; }
+.summary-top { margin-left: 230px; height: 720px; }
 .summary-top-right { height: 148px; position: relative; }
-.summary-top-inventory { height: 540px; position: relative; z-index: 1; }
-.summary-top, .summary-top-right, .summary-top-inventory { width: 762px; }
+.summary-top-inventory { height: 560px; position: relative; z-index: 1; }
+.summary-top, .summary-top-right, .summary-top-inventory { width: 790px; }
 .summary-middle { padding: 20px 15px; padding-top: 0; }
 .summary-middle .category { font-size: 16px; letter-spacing:normal;}
 .summary-middle .category-right { font-size: 11px; float: right; line-height: 27px; font-style: italic; color: #5D442B; letter-spacing: -.05em; }
@@ -31,10 +30,10 @@ ul.profile-sidebar-menu a { width: 160px; }
 .summary-middle-inner { padding: 15px 25px; background-color: rgba(0, 0, 0, 0.15); -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; }
 .summary-middle-left { margin-right: 367px; }
 .summary-middle-right { float: right; width: 333px; }
-.summary-bottom { padding: 32px 40px; background: url("../../images/character/summary/bottom-bg.png") left top no-repeat; min-height: 655px; }
+.summary-bottom { padding: 32px 40px; min-height: 655px; }
 .summary-bottom-sub-content { border-top: 1px solid #3d1e0f; margin-top: 19px; padding-top: 45px;}
 .summary-bottom-left { margin-right: 367px; }
-.summary-bottom-right { float: right; width: 385px; }
+.summary-bottom-right { float: right; width: 367px; }
 
 
 /* view options */
@@ -105,16 +104,13 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 
 
 
-
-{ float:right }
-
 /* inventory (simple) */
-.summary-inventory-simple { width: 612px; height: 455px; position: absolute; left: 28px; top: 1px; }
+/* .summary-inventory-simple { width: 740px; height: 550px; position: absolute; left: 28px; top: 1px; } */
 .summary-inventory a.item { -moz-box-shadow: 0 0 8px black; -webkit-box-shadow: 0 0 8px black; box-shadow: 0 0 8px black; }
 
 /* inventory (advanced) */
-.summary-inventory-advanced { width: 807px; height: 521px; position: absolute; left: -45px; top: -2px; }
-.summary-inventory-advanced .slot-inner { width: 265px; height: 57px; background: url("../../images/character/summary/item-slot-advanced-bg.png") left top repeat-y; }
+.summary-inventory-advanced, .summary-inventory-simple { width: 807px; height: 550px; position: absolute; left: -15px; }
+.summary-inventory-advanced .slot-inner { width: 265px; height: 57px; background: linear-gradient(to right, #111 0%, transparent 100%); }
 .summary-inventory-advanced .slot-highlight .slot-inner { background-position: left bottom; }
 .summary-inventory-advanced .details { position: absolute; width: 204px; height: 49px; left: 57px; top: 4px; white-space: nowrap; }
 .summary-inventory-advanced a.item,
@@ -139,7 +135,7 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 
 /* overrides for right-aligned slots */
 .summary-inventory-advanced .slot-align-right .details { left: auto; right: 57px; }
-.summary-inventory-advanced .slot-align-right .slot-inner { background-position: right top; text-align: right; }
+.summary-inventory-advanced .slot-align-right .slot-inner { text-align: right; background: linear-gradient(to left, #111 0%, transparent 100%); }
 .summary-inventory-advanced .slot-align-right.slot-highlight .slot-inner { background-position: right bottom; }
 .summary-inventory-advanced .slot-align-right a.item,
 .summary-inventory-advanced .slot-align-right a.empty { left: auto; right: 4px; }
@@ -153,6 +149,12 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 .summary-inventory-advanced .slot-align-right .sockets .icon-socket { margin-right: auto; margin-left: 4px; }
 .summary-inventory-advanced .slot-align-right .upgrade { text-align: right; left: auto; right: 87px; }
 
+/* overrides for middle-aligned slots */
+.summary-inventory-advanced .slot-align-middle .slot-inner { position: relative; top: 57px; text-align: right; background: linear-gradient(to left, #111 0%, transparent 100%); }
+.summary-inventory-advanced .slot-align-middle .slot-inner-binding { position: relative; left: 208px; bottom: 30px; height: 87px; width: 57px; background: linear-gradient(to bottom, #111 0%, transparent 100%) repeat scroll 0% 0%; }
+.summary-inventory-advanced .slot-align-middle .slot-contents { position: relative; bottom: 117px; left: 208.5px; text-align: right; background: linear-gradient(to left, #111 0%, transparent 100%); }
+
+
 /* item colors */
 .summary-inventory-advanced .item-quality-0 a.name { color: #9d9d9d; }
 .summary-inventory-advanced .item-quality-1 a.name { color: #ffffff; }
@@ -162,6 +164,17 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 .summary-inventory-advanced .item-quality-5 a.name { color: #ff8000; }
 .summary-inventory-advanced .item-quality-6 a.name { color: #e5cc80; }
 .summary-inventory-advanced .item-quality-7 a.name { color: #e5cc80; }
+
+	/* item quality */
+	.item-q0, .item-q0 a { color: #9d9d9d !important; } /* poor (gray) */
+	.item-q1, .item-q1 a { color: #ffffff !important; } /* common (white) */
+	.item-q2, .item-q2 a { color: #1eff00 !important; } /* uncommon (green) */
+	.item-q3, .item-q3 a { color: #0081ff !important; } /* #0070dd rare (blue) */
+	.item-q4, .item-q4 a { color: #c600ff !important; } /* #a335ee epic (purple) */
+	.item-q5, .item-q5 a { color: #ff8000 !important; } /* lengendary (orange) */
+	.item-q6, .item-q6 a { color: #e5cc80 !important; } /* artifact (gold) */
+	.item-q7, .item-q7 a { color: #e5cc80 !important; } /* heirloom (gold) */
+	
 
 /* gems */
 .summary-gems { float: left; width: 259px; }
@@ -173,6 +186,30 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 .summary-gems .times { font-size: 10px; margin-left: 4px; margin-right: 5px; line-height: 14px; color: #997647; }
 .summary-gems .icon { margin-right: 5px; }
 .summary-gems .name { width: 215px; }
+
+	/* socket icons */
+	.icon-socket { display: block; position: relative; width: 15px; height: 15px; }
+	.icon-socket a.gem { display: block; width: 15px; height: 15px; }
+	.icon-socket a.gem img { display: block; width: 13px; height: 13px; padding: 1px 0 0 1px; }
+	.icon-socket .empty { position: absolute; left: 1px; top: 1px; width: 13px; height: 13px; }
+	.icon-socket .frame { position: absolute; left: 0; top: 0; width: 15px; height: 15px; background: url("../../images/inventory/sockets.png") no-repeat; }
+	.icon-socket.socket-1  .empty { background-color: #29292a; } /* Meta */
+	.icon-socket.socket-2  .empty { background-color: #301010; } /* Red */
+	.icon-socket.socket-4  .empty { background-color: #403010; } /* Yellow */
+	.icon-socket.socket-8  .empty { background-color: #102040; } /* Blue */
+	.icon-socket.socket-14 .empty { background-color: #29292a; } /* Prismatic */
+	.icon-socket.socket-16 .empty { background-color: #000; }     /* Sha-touched */
+	.icon-socket.socket-32 .empty { background-color: #29292a; } /* Cogwheel */
+	.icon-socket.socket-1  .frame { background-position:  -45px   0; } /* Meta */
+	.icon-socket.socket-2  .frame { background-position:      0   0; } /* Red */
+	.icon-socket.socket-4  .frame { background-position:  -15px   0; } /* Yellow */
+	.icon-socket.socket-8  .frame { background-position:  -30px   0; } /* Blue */
+	.icon-socket.socket-6  .frame { background-position:  -90px   0; } /* Orange */
+	.icon-socket.socket-10 .frame { background-position:  -75px   0; } /* Purple */
+	.icon-socket.socket-12 .frame { background-position: -105px   0; } /* Green */
+	.icon-socket.socket-14 .frame { background-position:  -60px   0; } /* Prismatic */
+	.icon-socket.socket-16 .frame { background-position: -120px   0; } /* Sha-touched */
+	.icon-socket.socket-32 .frame { background-position:  -45px   0; } /* Cogwheel */
 
 /* enchant/gem bonuses */
 .summary-bonus-tally { float: right; width: 259px; }
@@ -219,27 +256,27 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 
 /* health/resource */
 .summary-health-resource { float: left; margin: 0 0px 10px; color: white; }
-.summary-health-resource li { margin-right: 11px; padding-left: 11px; text-shadow: 1px 1px 1px #000; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; background: url("../../images/character/summary/health-resource-bg.png") repeat-x; cursor: help; display: inline-block; width: 157px;}
+.summary-health-resource li { margin-right: 11px; padding-left: 11px; text-shadow: 1px 1px 1px #000; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; cursor: help; display: inline-block; width: 157px;}
 .summary-health-resource li, .summary-health-resource span { height: 23px; line-height: 23px; }
 .summary-health-resource .name { font-size: 11px; }
 .summary-health-resource .value { font-size: 12px; font-family:"Arial Black", Arial, sans-serif; font-weight:900; padding-left: 5px; }
-.summary-health-resource .health { background-position: 0 0; margin-bottom: 7px; background-color: #248000; }
-.summary-health-resource .resource-0 { background-position: 0 -23px; background-color: #1c8aff; }  /* Mana */
-.summary-health-resource .resource-1 { background-position: 0 -69px; background-color: #ab0000; }  /* Rage */
-.summary-health-resource .resource-2 { background-position: 0 -115px; background-color: #964414; } /* Focus */
-.summary-health-resource .resource-3 { background-position: 0 -46px; background-color: #cb9501; }  /* Energy */
-.summary-health-resource .resource-6 { background-position: 0 -92px; background-color: #00accb; }  /* Runic */
+.summary-health-resource .health { margin-bottom: 7px; background-color: #248000; background: linear-gradient(to top, #32b300 0%, #248000 50%, #164d00 100%); } /* used linear-gradient(to top, lighten(@start, 10) 0%, @start 50%, darken(@start, 10) 100%) */
+.summary-health-resource .resource-0 { background-color: #1c8aff; background: linear-gradient(to top, #4fa4ff 0%, #1c8aff 50%, #0070e8 100%); }  /* Mana */
+.summary-health-resource .resource-1 { background-color: #ab0000; background: linear-gradient(to top, #de0000 0%, #ab0000 50%, #780000 100%); }  /* Rage */
+.summary-health-resource .resource-2 { background-color: #964414; background: linear-gradient(to top, #c3581a 0%, #964414 50%, #69300e 100%); }  /* Focus */
+.summary-health-resource .resource-3 { background-color: #cb9501; background: linear-gradient(to top, #feba01 0%, #cb9501 50%, #987001 100%); }  /* Energy */
+.summary-health-resource .resource-6 { background-color: #00accb; background: linear-gradient(to top, #00d7fe 0%, #00accb 50%, #008198 100%); }  /* Runic */
 
 /* talents */
-.summary-talents { width: 333px; float: right; position:relative; top:-9px; }
+.summary-talents { width: 333px; float: right; position: relative; top: 14px; }
 
-.summary-talents .category { clear: both; height: 38px; line-height: 45px;}
+.summary-talents .category { clear: both; }
 
-.summary-talents .title { float: left; }
+.summary-talents .title { float: left; font-size: 18px; }
 
 .summary-talents .profile-box-simple { border-top: 0px; margin-top: 0px;}
 
-.summary-talents .talent-export { float: right; font-size: 11px; letter-spacing: 0; display: inline-block; line-height: 49px;}
+.summary-talents .talent-export { float: right; font-size: 11px; letter-spacing: 0; display: inline-block; }
 .summary-talents .talent-export .arrow { display: inline-block; background: url("../../images/icons/flyout-arrows.gif") no-repeat -4px -123px; width: 6px; height: 10px; margin: 0 0 -1px 6px;}
 
 .summary-talents .talent-specs { background-color: rgba(0,0,0,0.15); border-radius: 4px; border-bottom: 1px solid #3C1E12; clear: both;}
@@ -326,6 +363,7 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 /* stats */
 .summary-stats { padding-top: 15px; }
 .summary-stats .summary-stats-column h4 { color: white; font-size: 14px; font-weight: bold; margin-bottom: 7px; line-height: 21px;}
+.summary-stats .summary-stats-column select { margin: -2px 0; padding: 0px 5px; font-weight: bold; color: #FFF; background-color: transparent; border: 1px solid #AAA; border-radius: 2px; }
 .summary-stats-column { width: 234px; margin-top:13px; clear: left; white-space: nowrap; }
 .summary-stats-column:first-child { margin-top:0; }
 .summary-stats-column li { cursor: help; }
@@ -344,7 +382,7 @@ a.summary-stats-simple-arrow-right:hover { background-position: right bottom; }
 .summary-stats-simple-base, .summary-stats-advanced-base { float: left; margin-right: 27px; }
 .summary-stats-simple-other { position: relative; }
 .summary-stats-simple-other, .summary-stats-advanced-role { float: left; }
-.summary-stats-advanced li { padding: 10px 0; border-top: 1px solid #2f1e18; }
+.summary-stats-advanced li { padding: 2px 0; height: 20px; border-top: 1px solid #2f1e18; }
 a.summary-stats-toggler, a.summary-stats-toggler .inner { display: block; height: 26px; line-height: 26px; background: url("../../images/character/summary/stats-expand-bg.gif") left top no-repeat; font-size: 11px; }
 a.summary-stats-toggler { margin-top: 15px; text-align: center; padding-left: 10px; }
 a.summary-stats-toggler .inner { background-position: right top; padding-right: 10px; }
@@ -352,8 +390,7 @@ a.summary-stats-toggler:hover { background-position: left bottom; }
 a.summary-stats-toggler:hover .inner { background-position: right bottom; }
 .summary-stats-bottom { border-top: 1px solid #2f1e18; margin-top: 25px; padding-top: 25px; }
 
-.summary-bottom-sub-content .category .view-more { background: url("../../images/icons/more-arrows-wide.gif") no-repeat 100% 12px; display: inline-block; padding-right: 14px; }
-.summary-bottom-sub-content .category .view-more:hover { background-position: 100% -77px; }
+.summary-bottom-sub-content .category .view-more { display: inline-block; padding-right: 14px; }
 
 /* professions */
 .summary-professions { float: right; }
@@ -379,8 +416,8 @@ a.summary-stats-toggler:hover .inner { background-position: right bottom; }
 
 /* battlegrounds */
 .summary-battlegrounds { width: 183px; float: left; margin-top:4px; }
-.summary-battlegrounds .link { display: inline-block; font-size: 13px; position:relative; top:-1px; background: url("../../images/icons/more-arrows-wide.gif") no-repeat 100% 4px; padding-right: 14px; margin-bottom: 7px;}
-.summary-battlegrounds .link:hover { background-position: 100% -85px; }
+.summary-battlegrounds .link { display: inline-block; font-size: 17px; position:relative; top:-1px; padding-right: 14px; margin-bottom: 7px;}
+
 .summary-battlegrounds li { line-height: 23px; }
 .summary-battlegrounds .name { display: block; font-size: 11px; position:relative; top:-1px;}
 .summary-battlegrounds .value { display: block; font-family:"Arial Black", Arial, sans-serif; font-weight:900; font-size: 24px; }
@@ -545,10 +582,10 @@ a.summary-stats-toggler:hover .inner { background-position: right bottom; }
 .profile-box-full .prestige { float: right; width: 0; height: 0; position: relative; }
 .profile-box-full .prestige div { position: absolute; right: -27px; top: -49px; white-space: nowrap; font-size: 11px; color: #71401F; }
 .profile-box-full .prestige div strong { color: #C09A67; font-weight: normal; }
-.summary-raid .profile-box-full, .summary-arena .profile-box-full { padding: 20px 27px 20px; border-top: 2px solid #4a240f; background:none; }
+.summary-raid .profile-box-full, .summary-arena .profile-box-full { padding: 20px 0; border-top: 2px solid #4a240f; background:none; }
 
 /* last update */
-.summary-lastupdate { color: #71401F; font-style: italic; padding-top: 50px; text-align: center; }
+.summary-lastupdate { font-style: italic; text-align: right; }
 
 /* item list tooltip */
 .summary-item-list li { line-height: 15px; padding: 4px 0; }
@@ -564,14 +601,4 @@ a.summary-stats-toggler:hover .inner { background-position: right bottom; }
 .summary-save-image { margin-top: 10px }
 .summary-save-image a { margin-right: 10px; background: url('../../images/icons/down.gif') no-repeat right 3px; padding-right: 12px;}
 
-/* Tally of Medals Earned */
-.summary-challenge-mode { float: left; margin-top: 28px; }
-.summary-challenge-mode .link { display: inline-block; font-size: 13px; position:relative; top:-1px; background: url("../../images/icons/more-arrows-wide.gif") no-repeat 100% 4px; padding-right: 14px;}
-.summary-challenge-mode .link:hover { background-position: 100% -85px; }
 
-#challenge-mode-medals { height: 32px; font-size: 22px; top: 18px;}
-#challenge-mode-medals .medal { padding-right: 30px; background: transparent url("../../images/game/challenge/medals-sprite.png") no-repeat right 27px; line-height: 27px; display: inline-block; }
-#challenge-mode-medals .medal.gold { background-position: right 0; color: #ffd700; }
-#challenge-mode-medals .medal.silver { background-position: right -27px; color: #c0c0c0; }
-#challenge-mode-medals .medal.bronze { background-position: right -54px; color: #cd7f32; }
-#challenge-mode-medals .medal.none { background-position: right -81px; }

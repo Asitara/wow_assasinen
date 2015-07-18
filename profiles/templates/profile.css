@@ -1,5 +1,11 @@
 /* Asitaras stuff */
 #arsenal-view ul { list-style-type: none; padding-left: 0px; }
+.clear {
+    clear: both;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
 .clear-divider {
 	clear: both;
 	display: block;
@@ -31,6 +37,13 @@ ul.profile-sidebar-menu li::before, ul.profile-sidebar-menu li:last-child:after 
 		rgba(255, 255, 255, 0) 100%
 	);
 }
+
+
+
+
+
+
+
 
 
 
@@ -86,17 +99,17 @@ ul.profile-view-options { font-size: 12px; float: right; white-space: nowrap; }
 ul.profile-view-options li { float: right; margin: 0 0 0 17px; }
 ul.profile-view-options li.current a { color: white; font-weight: bold; }
 ul.profile-view-options a { display: block; padding: 4px 0 4px 19px; line-height: 16px; }
-ul.profile-view-options a.disabled { color: #595959; }
+ul.profile-view-options a .fa { color: #444; }
+/*ul.profile-view-options a.disabled { color: #595959; }
 ul.profile-view-options a.tabular { background-position: -150px center; }
 ul.profile-view-options a.advanced { background-position: 0 center; }
 ul.profile-view-options a.has-icon { background: none; padding-left: 0; line-height: 16px; }
 ul.profile-view-options .icon { float: left; margin-right: 4px; }
-ul.profile-view-options a.tip { cursor: help; border-bottom: 0; }
-ul.profile-view-options a .fa { color: #444; }
+ul.profile-view-options a.tip { cursor: help; border-bottom: 0; }*/
 .profile-section-header ul.profile-view-options { padding-top: 12px; }
 
 /* boxes */
-.profile-box-full { background: url(../images/character/summary/profilebox-borderfade.png) no-repeat; padding: 20px 30px; margin-top: 6px; }
+.profile-box-full { padding: 20px 30px; margin-top: 6px; }
 .profile-box-simple { border-top: 2px solid #4a240f; padding: 11px 0 11px; margin-top: 5px; }
 
 /* shared between all types of profiles */

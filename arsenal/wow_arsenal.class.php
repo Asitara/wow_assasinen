@@ -263,6 +263,11 @@ if(!class_exists('wow_arsenal')){
 
 	public function character_main_page(){
 		
+		// here will be my calculations and other stuff
+		
+		//---------------------------------------------------------------------
+		$template_file = file_get_contents($this->root_path.'games/wow_assasinen/profiles/templates/profile_view.html');
+		return $this->tpl->compileString($template_file);
 	}
 
 
