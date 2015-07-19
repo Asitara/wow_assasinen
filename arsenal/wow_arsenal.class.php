@@ -93,30 +93,6 @@ if(!class_exists('wow_arsenal')){
 			} $arrData['global']['class'] = $rb_class;
 			
 			
-			/*  sort and generate new array
-			$data_global	= $arrData['global'];
-			$data_unit		= $arrData['unit'];
-			$data_title		= $arrData['title'];
-			$data_rep 		= $arrData['rep'];
-			$data_currency	= $arrData['currency'];
-			$data_spells	= $arrData['spells'];
-			$data_glyphs 	= $arrData['glyphs'];
-			$data_creature	= $arrData['creature'];
-			$data_awards	= $arrData['awards'];
-			
-			unset($arrData);
-			$arrData = array(
-				'global'	=> $data_global,
-				'unit'		=> $data_unit,
-				'title'		=> $data_title,
-				'rep'		=> $data_rep,
-				'currency'	=> $data_currency,
-				'spells'	=> $data_spells,
-				'glyphs'	=> $data_glyphs,
-				'creature'	=> $data_creature,
-				'awards'	=> $data_awards,
-			);  */
-			
 			return $arrData;
 		}
 		
@@ -261,13 +237,15 @@ if(!class_exists('wow_arsenal')){
 	#																								#
 	#################################################################################################
 
-	public function character_main_page(){
+	public function character_main_page($arrData){
 		
-		// here will be my calculations and other stuff
+		$assign_vars = array(
+			
+		);
 		
 		//---------------------------------------------------------------------
 		$template_file = file_get_contents($this->root_path.'games/wow_assasinen/profiles/templates/profile_view.html');
-		return $this->tpl->compileString($template_file);
+		return $this->tpl->compileString($template_file, $assign_vars);
 	}
 
 

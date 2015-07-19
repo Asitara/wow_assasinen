@@ -1,26 +1,21 @@
-<div id="arsenal-view" class="profile-wrapper-horde" style="background-color: #4E4E4E;">
+<div id="arsenal-view" class="profile-wrapper-{ARS_CHAR_FACTION}" style="background-color: #4E4E4E;">
 	<div class="profile-sidebar-anchor">
 		<div class="profile-info-anchor">
 			<div class="profile-info">
 				<div class="name">{CHARDATA_NAME}</div>
 				<div class="title-guild">
 					<div class="title">{ARS_CHAR_TITLE_NAME}</div>
-					<div class="guild"><a href="{EQDKP_CONTROLLER_PATH}Roster{SEO_EXTENSION}{SID}">{ARS_CHAR_GUILD}</a></div>
+					<div class="guild"><a href="{EQDKP_ROSTER_URL}">{ARS_CHAR_GUILD}</a></div>
 				</div>
-				<span class="clear-divider"><!-- --></span>
+				<span class="clear-divider"></span>
 				<div class="under-name class_{ARS_CHAR_CLASS}"> <span class="level">{ARS_CHAR_LEVEL}</span>, {ARS_CHAR_RACE_NAME}, {ARS_CHAR_CURRENT_SPEC_NAME}, {ARS_CHAR_CLASS_NAME}, <span class="realm">{ARS_CHAR_REALM}</span> </div>
-				<div class="achievements"><a href="{EQDKP_CONTROLLER_PATH}Character/Neevi{SEO_EXTENSION}{SID}&achievements">###21780</a></div>
+				<div class="achievements"><a href="{MEMBERLINK}&page=achievements">###21780</a></div>
 			</div>
 		</div>
 		<ul class="profile-sidebar-menu">
-			<li class="active"> <a href="{EQDKP_CONTROLLER_PATH}Character/Neevi{SEO_EXTENSION}{SID}">Übersicht</a> </li>
-			<li class=""> <a href="/wow/de/character/teldrassil/Neevi/hunter-pet">Begleiter</a> </li>
-			<li class="disabled"> <a href=" ">Ereignisse <i class="fa fa-lock"></i></a> </li>
-			<li class=""> <a href="/wow/de/character/teldrassil/Neevi/achievement">Erfolge</a> </li>
-			<li class=""> <a href="/wow/de/character/teldrassil/Neevi/pet">Reit- und Haustiere</a> </li>
-			<li class=""> <a href="/wow/de/character/teldrassil/Neevi/profession/">Berufe</a> </li>
-			<li class=""> <a href="/wow/de/character/teldrassil/Neevi/reputation/">Ruf</a> </li>
-			<li class=""> <a href="/wow/de/character/teldrassil/Neevi/pvp">PvP</a> </li>
+			<!-- BEGIN sidebar_menu -->
+			<li class="<!-- IF sidebar_menu.ACTIVE -->active<!-- ENDIF --><!-- IF sidebar_menu.DISABLED -->disabled<!-- ENDIF -->"> <a href="<!-- IF not sidebar_menu.DISABLED -->{sidebar_menu.URL}<!-- ELSE -->javascript:;<!-- ENDIF -->">{sidebar_menu.NAME}<!-- IF sidebar_menu.DISABLED --> <i class="fa fa-lock"></i><!-- ENDIF --></a> </li>
+			<!-- END sidebar_menu -->
 		</ul>
 	</div>
 	

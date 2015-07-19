@@ -1,13 +1,52 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.profile-view-options a.simple').on('click', function(){
+		if ( ! $(this).parents('.current').length ){
+			$('.profile-view-options li.current').removeClass('current');
+			$(this).parents('li').addClass('current');
+			$('#summary-inventory').switchClass('summary-inventory-advanced', 'summary-inventory-simple');
+			$('.details').each(function(i, obj) {
+				$(this).hide();
+			});
+		}
+		
+		return false;
+	});
+	
+	$('.profile-view-options a.advanced').on('click', function(){
+		if ( ! $(this).parents('.current').length ){
+			$('.profile-view-options li.current').removeClass('current');
+			$(this).parents('li').addClass('current');
+			$('#summary-inventory').switchClass('summary-inventory-simple', 'summary-inventory-advanced');
+			$('.details').each(function(i, obj) {
+				$(this).show();
+			});
+		}
+		
+		return false;
+	});
+	
+	$('#summary-stats-changer').change(function(){
+		var value = $(this).val();
+		$('.summary-stats-container').each(function(i, obj) {
+			$(this).hide();
+		});
+		$('.summary-stats-container[data-type="'+value+'"]').show();
+	});
+});
+
+
+</script>
 
 <div class="summary-top">
 	<div class="summary-top-right">
 		<ul class="profile-view-options">
-			<li> <a href="/character/Neevi/advanced" class="advanced"><i class="fa fa-search"></i> Erweitert</a> </li>
-			<li class="current"> <a href="/character/Neevi/simple" class="simple"><i class="fa fa-user"></i> Einfach</a> </li>
+			<li class=""><a href="" class="advanced"><i class="fa fa-search"></i> {L_advanced}</a></li>
+			<li class="current"><a href="" class="simple"><i class="fa fa-user"></i> {L_easy}</a></li>
 		</ul>
 		<div class="summary-averageilvl">
-			<div class="rest"> Durchschnittliche Gegenstandsstufe<br />
-				(<span class="equipped">708</span> ausgerüstet) </div>
+			<div class="rest"> {L_average_itemlevel}<br />
+				(<span class="equipped">708</span> {L_equipped}) </div>
 			<div id="summary-averageilvl-best" class="best tip" data-id="averageilvl">710</div>
 		</div>
 	</div>
@@ -190,7 +229,7 @@
 							</span>
 						</span>
 					</a>
-					<span class="clear"><!-- --></span>
+					<span class="clear"></span>
 				</div>
 				<div class="talent-build selected" id="talent-build-0"></div>
 				<div class="talent-build " id="talent-build-1"></div>
@@ -213,52 +252,52 @@
 							<div class="summary-stats-column">
 								<h4>Allgemein</h4>
 								<ul>
-									<li> <span class="name">Beweglichkeit</span> <span class="value item-q2">5321</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Angriffskraft</span> <span class="value">5853</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Meisterschaft</span> <span class="value item-q2">33,22 %</span> <span class="clear"><!-- --></span> </li>
+									<li> <span class="name">Beweglichkeit</span> <span class="value item-q2">5321</span> <span class="clear"></span> </li>
+									<li> <span class="name">Angriffskraft</span> <span class="value">5853</span> <span class="clear"></span> </li>
+									<li> <span class="name">Meisterschaft</span> <span class="value item-q2">33,22 %</span> <span class="clear"></span> </li>
 								</ul>
 							</div>
 						</div>
 						<div class="summary-stats-advanced-role">
 							<div class="summary-stats-column">
 								<h4>
-								<select id="summary-stats-changer">
-									<option val="melee-stats">Nahkampf</option>
-									<option val="range-stats">Distanzkampf</option>
-									<option val="mage-stats">Zauber</option>
-									<option val="defense-stats">Verteidigung</option>
-									<option val="resist-stats">Widerstand</option>
+								<select id="summary-stats-changer" value="melee-stats">
+									<option value="melee-stats" selected>Nahkampf</option>
+									<option value="range-stats">Distanzkampf</option>
+									<option value="mage-stats">Zauber</option>
+									<option value="defense-stats">Verteidigung</option>
+									<option value="resist-stats">Widerstand</option>
 								</select>
 								</h4>
 								<ul class="summary-stats-container" data-type="melee-stats">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"><!-- --></span> </li>
+									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
 								</ul>
-								<ul class="summary-stats-container" data-type="range-stats">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"><!-- --></span> </li>
+								<ul class="summary-stats-container" data-type="range-stats" style="display:none;">
+									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
 								</ul>
-								<ul class="summary-stats-container" data-type="mage-stats">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"><!-- --></span> </li>
+								<ul class="summary-stats-container" data-type="mage-stats" style="display:none;">
+									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
 								</ul>
-								<ul class="summary-stats-container" data-type="defense-stats">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"><!-- --></span> </li>
+								<ul class="summary-stats-container" data-type="defense-stats" style="display:none;">
+									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
 								</ul>
-								<ul class="summary-stats-container" data-type="resist-stats">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"><!-- --></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"><!-- --></span> </li>
+								<ul class="summary-stats-container" data-type="resist-stats" style="display:none;">
+									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
+									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
 								</ul>
 							</div>
 						</div>
@@ -268,14 +307,14 @@
 			</div>
 		</div>
 	</div>
-	<span class="clear"><!-- --></span>
+	<span class="clear"></span>
 	<div class="summary-bottom-sub-content">
 		<div class="summary-bottom-right">
 			<div class="profile-recentactivity">
 				<h3 class="category "> <a href="feed" class="view-more">Letzte Aktivitäten <i class="fa fa-angle-right"></i></a> </h3>
 				<div class="profile-box-simple">
 					<!-- put here our reached achievments -->
-					<span class="clear"><!-- --></span>
+					<span class="clear"></span>
 				</div>
 			</div>
 		</div>
@@ -303,10 +342,10 @@
 					</li>
 				</ul>
 			</div>
-			<span class="clear"><!-- --></span>
+			<span class="clear"></span>
 		</div>
 	</div>
-	<span class="clear"><!-- --></span>
+	<span class="clear"></span>
 	<div id="summary-raid" class="summary-raid">
 		<h3 class="category">Portal- und Raidkalender Statistiken</h3>
 		<div class="profile-box-full">
@@ -399,5 +438,5 @@
 			
 		</div>
 	</div>
-	<span class="clear"><!-- --></span>
+	<span class="clear"></span>
 

@@ -24,6 +24,23 @@ if (!defined('EQDKP_INC')){
 }
 
 $lang = array(
+	//character profile lang codes
+	'advanced'			=> 'Erweitert',
+	'average_itemlevel'	=> 'Durchschnittliche Gegenstandsstufe',
+	'equipped'			=> 'ausgerüstet',
+	'easy'				=> 'Einfach',
+	
+	
+	'character_pages' => array(
+		'overview'		=> 'Übersicht',
+		'achievements'	=> 'Erfolge',
+		'companions'	=> 'Reit- und Haustiere',
+		'professions'	=> 'Berufe',
+		'reputation'	=> 'Ruf',
+		'pvp'			=> 'PvP',
+		'guild'			=> 'Gilde',
+	),
+	
 	'races' => array(
 		'1_2'	=> 'Gnom',
 		'1_3'	=> 'Gnomin',
@@ -72,7 +89,7 @@ $lang = array(
 		'10_2'	=> 'Krieger',
 		'10_3'	=> 'Kriegerin',
 	),
-	'talents'		=> array(
+	'talents' => array(
 		398 	=> 'Blut',
 		399 	=> 'Frost',
 		400 	=> 'Unheilig',
