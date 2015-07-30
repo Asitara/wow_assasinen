@@ -38,7 +38,10 @@ ul.profile-sidebar-menu li::before, ul.profile-sidebar-menu li:last-child:after 
 	);
 }
 
-
+.icon-dps, .icon-healer, .icon-tank { float: right; width: 16px; height: 16px; background: url("../../images/icons/roles.png") no-repeat; }
+.icon-dps { background-position: 0 0; }
+.icon-healer { background-position: -16px 0; }
+.icon-tank { background-position: -32px 0; }
 
 
 

@@ -49,8 +49,7 @@ if ( !class_exists( "pdh_r_arsenal_character" ) ) {
 		'arsenal_character_currencies'		=> array('currencies', array('%id%'), array()),
 		'arsenal_character_talents'			=> array('talents', array('%id%'), array()),
 		'arsenal_character_professions'		=> array('professions', array('%id%'), array()),
-		'arsenal_character_mounts'			=> array('mounts', array('%id%'), array()),
-		'arsenal_character_critters'		=> array('critters', array('%id%'), array()),
+		'arsenal_character_companions'		=> array('companions', array('%id%'), array()),
 		'arsenal_character_inventory'		=> array('inventory', array('%id%'), array()),
 		'arsenal_character_achievements'	=> array('achievements', array('%id%'), array()),
 	);
@@ -87,8 +86,7 @@ if ( !class_exists( "pdh_r_arsenal_character" ) ) {
 						'currencies'	=> $drow['currencies'],
 						'talents'		=> $drow['talents'],
 						'professions'	=> $drow['professions'],
-						'mounts'		=> $drow['mounts'],
-						'critters'		=> $drow['critters'],
+						'companions'	=> $drow['companions'],
 						'inventory'		=> $drow['inventory'],
 						'achievements'	=> $drow['achievements'],
 
@@ -288,25 +286,13 @@ if ( !class_exists( "pdh_r_arsenal_character" ) ) {
 		}
 
 		/**
-		 * Returns mounts for $id				
+		 * Returns companions for $id				
 		 * @param integer $id
-		 * @return multitype mounts
+		 * @return multitype companions
 		 */
-		 public function get_mounts($id){
+		 public function get_companions($id){
 			if (isset($this->arsenal_character[$id])){
-				return $this->arsenal_character[$id]['mounts'];
-			}
-			return false;
-		}
-
-		/**
-		 * Returns critters for $id				
-		 * @param integer $id
-		 * @return multitype critters
-		 */
-		 public function get_critters($id){
-			if (isset($this->arsenal_character[$id])){
-				return $this->arsenal_character[$id]['critters'];
+				return $this->arsenal_character[$id]['companions'];
 			}
 			return false;
 		}

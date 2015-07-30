@@ -61,15 +61,15 @@ foreach($disablePages as $page => $disabled){
 
 
 $this->tpl->assign_vars(array(
-	'ARS_CHAR_TITLE_NAME'	=> $this->user->lang('titles')[$arrData['title']],
-	'ARS_CHAR_GUILD'		=> $this->pdh->get('member', 'profile_field', array($this->url_id, 'guild')),
-	'ARS_CHAR_LEVEL'		=> $arrData['level'],
-	'ARS_CHAR_RACE_NAME'	=> $this->user->lang('races')[$arrData['race'].'_'.$arrData['gender']],
-	'ARS_CHAR_CLASS'		=> $arrData['class'],
-	'ARS_CHAR_CLASS_NAME'	=> $this->user->lang('classes')[$arrData['class'].'_'.$arrData['gender']],
-	'ARS_CHAR_CURRENT_SPEC_NAME'=> $this->user->lang('talents')[$arrData['talents']['selected']],
-	'ARS_CHAR_REALM'		=> $this->pdh->get('member', 'profile_field', array($this->url_id, 'servername')),
-	'ARS_CHAR_FACTION'		=> $arrData['faction'],
+	'CHAR_TITLE_NAME'	=> $this->user->lang('ars_data_titles')[$arrData['title']],
+	'CHAR_GUILD'		=> $this->pdh->get('member', 'profile_field', array($this->url_id, 'guild')),
+	'CHAR_LEVEL'		=> $arrData['level'],
+	'CHAR_RACE_NAME'	=> $this->user->lang('ars_data_races')[$arrData['race'].'_'.$arrData['gender']],
+	'CHAR_CLASS'		=> $arrData['class'],
+	'CHAR_CLASS_NAME'	=> $this->user->lang('ars_data_classes')[$arrData['class'].'_'.$arrData['gender']],
+	'CHAR_CURRENT_SPEC_NAME'=> $this->user->lang('ars_data_talents')[$arrData['talents']['selected']],
+	'CHAR_REALM'		=> $this->pdh->get('member', 'profile_field', array($this->url_id, 'servername')),
+	'CHAR_FACTION'		=> $arrData['faction'],
 	'MEMBERLINK'			=> $this->pdh->get('member', 'memberlink', array($this->url_id, $this->routing->simpleBuild('character'), '', true)),
 	'EQDKP_ROSTER_URL'		=> $this->routing->simpleBuild('roster'),
 	

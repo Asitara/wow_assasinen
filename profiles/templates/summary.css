@@ -279,7 +279,7 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 .summary-talents .talent-export { float: right; font-size: 11px; letter-spacing: 0; display: inline-block; }
 .summary-talents .talent-export .arrow { display: inline-block; background: url("../../images/icons/flyout-arrows.gif") no-repeat -4px -123px; width: 6px; height: 10px; margin: 0 0 -1px 6px;}
 
-.summary-talents .talent-specs { background-color: rgba(0,0,0,0.15); border-radius: 4px; border-bottom: 1px solid #3C1E12; clear: both;}
+.summary-talents .talent-specs { background-color: rgba(0,0,0,0.15); border-radius: 4px; clear: both;}
 
 .summary-talents .talent-specs .inner { display: block; padding: 8px 7px 11px 12px; padding-bottom: 0; position: relative;}
 .summary-talents .talent-specs .roles { position: absolute; left: 13px; top: 25px; width: 32px; height: 16px; }
@@ -295,43 +295,15 @@ a.summary-link-tools { display: block; width: 21px; height: 21px; background: ur
 .summary-talents .talent-specs .build { display: block; color: white; padding-top: 3px; font-weight: normal; font-size: 12px; }
 .summary-talents .talent-specs .build ins { color: #808080; padding: 0 4px; font-weight: normal; text-decoration: none; }
 
-.summary-talents .talent-specs a { vertical-align: top; width: 164px; height: 47px; display: block; position: relative;overflow: hidden; border-top: 1px solid #683b27;
-    background-color: #512c1b; /* Old browsers */
-    background-image: -moz-linear-gradient(top,  #512c1b 0%, #30120b 100%); /* FF3.6+ */
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#512c1b), color-stop(100%,#30120b)); /* Chrome,Safari4+ */
-    background-image: -webkit-linear-gradient(top,  #512c1b 0%,#30120b 100%); /* Chrome10+,Safari5.1+ */
-    background-image: -o-linear-gradient(top,  #512c1b 0%,#30120b 100%); /* Opera 11.10+ */
-    background-image: -ms-linear-gradient(top,  #512c1b 0%,#30120b 100%); /* IE10+ */
-    background-image: linear-gradient(to bottom,  #512c1b 0%,#30120b 100%); /* W3C */
-}
-.summary-talents .talent-specs a:hover {
-    border-top: 1px solid #73412b;
-    background-color: #59301e; /* Old browsers */
-    background-image: -moz-linear-gradient(top,  #59301e 0%, #35140c 100%); /* FF3.6+ */
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#59301e), color-stop(100%,#35140c)); /* Chrome,Safari4+ */
-    background-image: -webkit-linear-gradient(top,  #59301e 0%,#35140c 100%); /* Chrome10+,Safari5.1+ */
-    background-image: -o-linear-gradient(top,  #59301e 0%,#35140c 100%); /* Opera 11.10+ */
-    background-image: -ms-linear-gradient(top,  #59301e 0%,#35140c 100%); /* IE10+ */
-    background-image: linear-gradient(to bottom,  #59301e 0%,#35140c 100%); /* W3C */
-}
-.summary-talents .talent-specs a.disabled {
-	cursor: default;
-	background-color: #512c1b; /* Old browsers */
-	background-image: -moz-linear-gradient(top,  #512c1b 0%, #30120b 100%); /* FF3.6+ */
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#512c1b), color-stop(100%,#30120b)); /* Chrome,Safari4+ */
-	background-image: -webkit-linear-gradient(top,  #512c1b 0%,#30120b 100%); /* Chrome10+,Safari5.1+ */
-	background-image: -o-linear-gradient(top,  #512c1b 0%,#30120b 100%); /* Opera 11.10+ */
-	background-image: -ms-linear-gradient(top,  #512c1b 0%,#30120b 100%); /* IE10+ */
-	background-image: linear-gradient(to bottom,  #512c1b 0%,#30120b 100%); /* W3C */
-}
+.summary-talents .talent-specs a { vertical-align: top; width: 164px; height: 47px; display: block; position: relative;overflow: hidden; border: 1px solid transparent; }
+.summary-talents .talent-specs a:hover { border: 1px solid #0359DB; background-image: linear-gradient(to bottom, rgba(4, 99, 159, 0.6) 0%, #35140C 100%); }
 
-.summary-talents .talent-specs a.spec-0 { float: left; border-radius: 4px 0px 0px 4px; margin: 2px 0px 2px 2px;  }
-.summary-talents .talent-specs a.spec-1 { float: right; border-radius: 0px 4px 4px 0px; margin: 2px 2px 2px 0px; }
+.summary-talents .talent-specs a.spec-0 { float: left; border-radius: 4px 0px 0px 4px; margin: 0 0.5px 0 0; }
+.summary-talents .talent-specs a.spec-1 { float: right; border-radius: 0px 4px 4px 0px; margin: 0 0 0 0.5px; }
 
 .summary-talents .talent-specs a:hover .name { color: white !important; }
-.summary-talents .talent-specs a.disabled .name { color: #996E46 !important; }
 
-.summary-talents .talent-specs a.selected { border-top: 1px solid transparent; background: transparent; cursor: default; }
+.summary-talents .talent-specs a.selected { border: 1px solid #0359DB; background-image: linear-gradient(to bottom, rgba(4, 99, 159, 0.6) 0%, #35140C 100%); cursor: default; }
 .summary-talents .talent-specs a.selected .name { color: #FFF; }
 
 .summary-talents .talent-build { float: right; width: 100%; border-radius: 5px; display: none; }

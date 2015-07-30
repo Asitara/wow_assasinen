@@ -46,12 +46,53 @@ $(document).ready(function(){
 		</ul>
 		<div class="summary-averageilvl">
 			<div class="rest"> {L_average_itemlevel}<br />
-				(<span class="equipped">708</span> {L_equipped}) </div>
-			<div id="summary-averageilvl-best" class="best tip" data-id="averageilvl">710</div>
+				(<span class="equipped">{AVG_ILVL_EQ}</span> {L_equipped}) </div>
+			<div id="summary-averageilvl-best" class="best tip" data-id="averageilvl">{AVG_ILVL}</div>
 		</div>
 	</div>
 	<div class="summary-top-inventory">
 		<div id="summary-inventory" class="summary-inventory summary-inventory-advanced" style="background: url('{EQDKP_ROOT_PATH}games/wow_assasinen/images/character/10-1.jpg') no-repeat center center;">
+			
+			
+			<!-- BEGIN char_equip -->
+			<div class="slot slot-{char_equip.SLOT} item-quality-{char_equip.QUALITY}" style=" left: 90px; top: -60px;">
+				<div class="slot-inner">
+					<div class="slot-contents">
+						<a href="http://cata.openwow.com/item={char_equip.ID}" class="item">
+							<img src="http://wow.zamimg.com/images/wow/icons/large/{char_equip.ICON}.jpg" alt="" />
+							<span class="frame"></span>
+						</a>
+						
+						<!-- wenn advanced active -->
+						<div class="details">
+							<span class="name-shadow">Schulterstücke der wilden Jagd</span>
+							<span class="name item-q4">
+								<a href="/wow/de/item/124307/raid-heroic" data-item="g0=127760&amp;set=124296,124307,124284,124301&amp;d=87&amp;t=50698&amp;pl=100&amp;cc=5&amp;bl=564,566">Schulterstücke der wilden Jagd</a>
+							</span>
+							
+							<span class="enchant-shadow">Gabe des kritischen Trefferwerts</span>
+							<div class="enchant item-q2">
+								<a href="/wow/de/item/110652">Gabe des kritischen Trefferwerts</a>
+							</div>
+							
+							<span class="level">710</span>
+								<span class="sockets">
+									<span class="icon-socket socket-14">
+											<a href="/wow/de/item/127760" class="gem">
+												<img src="http://media.blizzard.com/wow/icons/18/inv_jewelcrafting_immactaladite_yellow.jpg" alt="" />
+												<span class="frame"></span>
+											</a>
+									</span>
+								</span>
+						</div>
+						<!-- advanced active -->
+					</div>
+				</div>
+			</div>
+			<!-- END char_equip -->
+			
+			
+			
 			<div data-id="0" data-type="1" class="slot slot-1 item-quality-4" style=" left: 0px; top: 0px;">
 				<div class="slot-inner">
 					<div class="slot-contents"> <a href="/wow/de/item/115545/raid-mythic" class="item" data-item="set=115545,115547,115548,115549&amp;d=96&amp;pl=100&amp;cc=6&amp;bl=567"><img src="http://media.blizzard.com/wow/icons/56/inv_helm_mail_raidhuntermythic_o_01.jpg" alt="" /><span class="frame"></span></a> </div>
@@ -194,41 +235,30 @@ $(document).ready(function(){
 			
 		</div>
 	</div>
-	<div class="summary-lastupdate"> Letzte Aktualisierung am 09.07.2015 </div>
+	<div class="summary-lastupdate">{L_last_updated} {LAST_UPDATE}</div>
 </div>
 
 <div class="summary-bottom">
 	<div class="summary-bottom-right">
-		<div class="summary-talents" id="summary-talents">
-			<h3 class="category "> <span class="title">Talente</span> <a name="talents" href="/wow/de/tool/talent-calculator#Yaa%212011222%21gdZQNj" target="_blank" class="talent-export">Im Talentplaner anzeigen <i class="fa fa-angle-right"></i></a> </h3>
+		<div id="summary-talents" class="summary-talents">
+			<h3 class="category "> <span class="title">{L_talents}</span> <a name="talents" href="{MEMBERLINK}" target="_blank" class="talent-export">{L_show_in_talentplaner} <i class="fa fa-angle-right"></i></a> </h3>
 			<div class="profile-box-simple">
-				<div class="talent-specs" data-class-name="hunter">
-					<a data-spec-id="0" class="spec-button spec-0 selected active" href="javascript:;">
+				<div class="talent-specs">
+					<!-- BEGIN char_talents -->
+					<a class="spec-button spec-{char_talents.SPEC_TYPE} <!-- IF char_talents.SELECTED --> selected active<!-- ENDIF -->" href="javascript:;">
 						<span class="inner">
 							<span class="frame">
-								<span class="icon"><img src="http://media.blizzard.com/wow/icons/36/ability_hunter_bestialdiscipline.jpg" alt="" /></span>
+								<span class="icon"><img src="{EQDKP_ROOT_PATH}games/wow_assasinen/images/talents/{char_talents.SPEC_ID}.png" alt="" /></span>
 							</span>
 							<span class="roles">
-								<span class="icon-dps"></span>
+								<span class="icon-{CHAR_MAIN_ROLE}"></span>
 							</span>
 							<span class="name-build">
-								<span class="name ">Tierherrschaft</span>
+								<span class="name ">{char_talents.SPEC_NAME}</span>
 							</span>
 						</span>
 					</a>
-					<a data-spec-id="1" class="spec-button spec-1" href="javascript:;">
-						<span class="inner">
-							<span class="frame">
-								<span class="icon"><img src="http://media.blizzard.com/wow/icons/36/ability_hunter_focusedaim.jpg" alt="" /></span>
-							</span>
-							<span class="roles">
-								<span class="icon-dps"></span>
-							</span>
-							<span class="name-build">
-								<span class="name ">Treffsicherheit</span>
-							</span>
-						</span>
-					</a>
+					<!-- END char_talents -->
 					<span class="clear"></span>
 				</div>
 				<div class="talent-build selected" id="talent-build-0"></div>
@@ -240,8 +270,8 @@ $(document).ready(function(){
 	<div class="summary-bottom-left">
 		<div class="summary-health-resource">
 			<ul>
-				<li class="health" id="summary-health" data-id="health"><span class="name">Gesundheit</span><span class="value">358440</span></li>
-				<li class="resource-2" id="summary-power" data-id="power-2"><span class="name">Fokus</span><span class="value">120</span></li>
+				<li class="health" id="summary-health" data-id="health"><span class="name">{L_health}</span><span class="value">{CHAR_HEALTH}</span></li>
+				<li class="resource-{CHAR_POWER_TYPE}" id="summary-power" data-id="power-{CHAR_POWER_TYPE}"><span class="name">{CHAR_POWER_TYPE_NAME}</span><span class="value">{CHAR_POWER}</span></li>
 			</ul>
 		</div>
 		<div class="summary-stats-profs-bgs">
@@ -250,55 +280,39 @@ $(document).ready(function(){
 					<div id="summary-stats-spec0" class="summary-stats-specs">
 						<div class="summary-stats-advanced-base">
 							<div class="summary-stats-column">
-								<h4>Allgemein</h4>
+								<h4>{L_general}</h4>
+								<!-- BEGIN char_stats -->
+								<!-- IF char_stats.NAME == 'attributes' -->
 								<ul>
-									<li> <span class="name">Beweglichkeit</span> <span class="value item-q2">5321</span> <span class="clear"></span> </li>
-									<li> <span class="name">Angriffskraft</span> <span class="value">5853</span> <span class="clear"></span> </li>
-									<li> <span class="name">Meisterschaft</span> <span class="value item-q2">33,22 %</span> <span class="clear"></span> </li>
+									<!-- BEGIN stat -->
+									<li> <span class="name">{char_stats.stat.NAME}</span> <span class="value">{char_stats.stat.VALUE}</span> <span class="clear"></span> </li>
+									<!-- END stat -->
 								</ul>
+								<!-- ENDIF -->
+								<!-- END char_stats -->
 							</div>
 						</div>
 						<div class="summary-stats-advanced-role">
 							<div class="summary-stats-column">
 								<h4>
-								<select id="summary-stats-changer" value="melee-stats">
-									<option value="melee-stats" selected>Nahkampf</option>
-									<option value="range-stats">Distanzkampf</option>
-									<option value="mage-stats">Zauber</option>
-									<option value="defense-stats">Verteidigung</option>
-									<option value="resist-stats">Widerstand</option>
+								<select id="summary-stats-changer" value="{CHAR_MAIN_STAT}-stats">
+									<!-- BEGIN char_stats -->
+									<!-- IF char_stats.NAME != 'attributes' -->
+									<option value="{char_stats.NAME}-stats" <!-- IF CHAR_MAIN_STAT == char_stats.NAME -->selected<!-- ENDIF -->>{char_stats.LANG_NAME}</option>
+									<!-- ENDIF -->
+									<!-- END char_stats -->
 								</select>
 								</h4>
-								<ul class="summary-stats-container" data-type="melee-stats">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
+								
+								<!-- BEGIN char_stats -->
+								<!-- IF char_stats.NAME != 'attributes' -->
+								<ul class="summary-stats-container" data-type="{char_stats.NAME}-stats" <!-- IF not char_stats.IS_MAIN_STAT -->style="display:none;"<!-- ENDIF -->>
+									<!-- BEGIN stat -->
+									<li> <span class="name">{char_stats.stat.NAME}</span> <span class="value">{char_stats.stat.VALUE}</span> <span class="clear"></span> </li>
+									<!-- END stat -->
 								</ul>
-								<ul class="summary-stats-container" data-type="range-stats" style="display:none;">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
-								</ul>
-								<ul class="summary-stats-container" data-type="mage-stats" style="display:none;">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
-								</ul>
-								<ul class="summary-stats-container" data-type="defense-stats" style="display:none;">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
-								</ul>
-								<ul class="summary-stats-container" data-type="resist-stats" style="display:none;">
-									<li> <span class="name">Kritischer Trefferwert</span> <span class="value">33,52 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Tempo</span> <span class="value">2,54 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Mehrfachschlag</span> <span class="value">35,48 %</span> <span class="clear"></span> </li>
-									<li> <span class="name">Vielseitigkeit</span> <span class="value">0,98 %</span> <span class="clear"></span> </li>
-								</ul>
+								<!-- ENDIF -->
+								<!-- END char_stats -->
 							</div>
 						</div>
 						<div class="summary-stats-end"></div>

@@ -25,10 +25,32 @@ if (!defined('EQDKP_INC')){
 
 $lang = array(
 	//character profile lang codes
+	// A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 	'advanced'			=> 'Erweitert',
 	'average_itemlevel'	=> 'Durchschnittliche Gegenstandsstufe',
-	'equipped'			=> 'ausgerüstet',
-	'easy'				=> 'Einfach',
+	
+	'equipped'		=> 'ausgerüstet',
+	'easy'			=> 'Einfach',
+	
+	'general'		=> 'Allgemein',
+	
+	'health'		=> 'Gesundheit',
+	
+	'last_updated'	=> 'Letzte Aktualisierung am',
+	
+	'power_type_0'	=> 'Mana',
+	'power_type_1'	=> 'Wut',
+	'power_type_2'	=> 'Fokus',
+	'power_type_3'	=> 'Energie',
+	'power_type_6'	=> 'Runenmacht',
+	
+	'show_in_talentplaner'	=> 'Im Talentplaner anzeigen',
+	
+	'talents'	=> 'Talente',
+	
+	
+	
+	
 	
 	
 	'character_pages' => array(
@@ -41,7 +63,7 @@ $lang = array(
 		'guild'			=> 'Gilde',
 	),
 	
-	'races' => array(
+	'ars_data_races' => array(
 		'1_2'	=> 'Gnom',
 		'1_3'	=> 'Gnomin',
 		'2_2'	=> 'Mensch',
@@ -67,7 +89,7 @@ $lang = array(
 		'12_2'	=> 'Goblin',
 		'12_3'	=> 'Goblin',
 	),
-	'classes' => array(
+	'ars_data_classes' => array(
 		'1_2'	=> 'Todesritter',
 		'1_3'	=> 'Todesritterin',
 		'2_2'	=> 'Druide',
@@ -89,7 +111,70 @@ $lang = array(
 		'10_2'	=> 'Krieger',
 		'10_3'	=> 'Kriegerin',
 	),
-	'talents' => array(
+	'ars_data_stats' => array(
+		'attributes' => array(
+			'str'	=> 'Stärke',
+			'agi'	=> 'Beweglichkeit',
+			'sta'	=> 'Ausdauer',
+			'int'	=> 'Intelligenz',
+			'spr'	=> 'Willenskraft',
+		),
+		'melee' => array(
+			'weaponDmg'			=> 'Schaden',
+			'weaponSpeed'		=> 'Angriffstempo',
+			'meleeAttackPower'	=> 'Angriffskraft',
+			'meleeHaste'		=> 'Tempo',
+			'meleeHit'			=> 'Trefferwertung',
+			'meleeCrit'			=> 'Kritisch',
+			'meleeExp'			=> 'Waffenkunde',
+			'mastery'			=> 'Meistershaft',
+		),
+		'range' => array(
+			'weaponDmg'			=> 'Schaden',
+			'rangeAttackPower'	=> 'Angriffskraft',
+			'weaponSpeed'		=> 'Angriffstempo',
+			'rangeHit'			=> 'Trefferwertung',
+			'rangeCrit'			=> 'Kritisch',
+			'rangeHaste'		=> 'Tempo',
+			'rangeFocusReg'		=> 'Fokusregeneration',
+			'mastery'			=> 'Meistershaft',
+		),
+		'mage' => array(
+			'spellBonusDmg'		=> 'Zaubermacht Schaden',
+			'spellBonusHealing'	=> 'Zaubermacht Heilung',
+			'spellHaste'		=> 'Tempo',
+			'spellHit'			=> 'Trefferwertung',
+			'spellCrit'			=> 'Kritisch',
+			'spellPen'			=> 'Durchschlag',
+			'mana5'				=> 'Regeneration',
+			'mana5combat'		=> 'Kampfregeneration',
+			'mastery'			=> 'Meistershaft',
+		),
+		'defense' => array(
+			'armor'			=> 'Rüstung',
+			'dodge'			=> 'Ausweichen',
+			'parry'			=> 'Parieren',
+			'block'			=> 'Blocken',
+			'resilience'	=> 'Abhärtung',
+		),
+		'resistance' => array(
+			'resistHoly'	=> 'Heilig',
+			'resistFire'	=> 'Feuer',
+			'resistNature'	=> 'Natur',
+			'resistFrost'	=> 'Frost',
+			'resistArcane'	=> 'Arkan',
+			'resistShadow'	=> 'Schatten',
+		),
+	),
+	'ars_data_stats_cat' => array(
+		'melee'			=> 'Nahkampf',
+		'range'			=> 'Fernkampf',
+		'mage'			=> 'Zauber',
+		'defense'		=> 'Verteidigung',
+		'resistance'	=> 'Wiederstände',
+	),
+	
+	'ars_data_talents' => array(
 		398 	=> 'Blut',
 		399 	=> 'Frost',
 		400 	=> 'Unheilig',
@@ -121,9 +206,7 @@ $lang = array(
 		815 	=> 'Furor',
 		845 	=> 'Schutz',
 	),
-	
-	
-	'professions' => array( // Blizzard API "skillLine" IDs
+	'ars_data_professions' => array( // Blizzard API "skillLine" IDs
 		171	=> 'Alchemie',
 		186	=> 'Bergbau',
 		202	=> 'Ingenieurskunst',
@@ -140,7 +223,7 @@ $lang = array(
 		129	=> 'Erste Hilfe',
 		184	=> 'Kochkunst',
 	),
-	'titles' => array( // Blizzard IDs
+	'ars_data_titles' => array( // Blizzard IDs
 		1	=> 'Gefreite ',
 		2	=> 'Fußknecht ',
 		3	=> 'Landsknecht ',
@@ -337,7 +420,7 @@ $lang = array(
 		194	=> ' Retterin von Azeroth',
 		196	=> ' der Tod des Zerstörers',
 	),
-	'currencies' => array( // Blizzard IDs
+	'ars_data_currencies' => array( // Blizzard IDs
 		0	=> 'Unbekannt',
 		396	=> 'Tapferkeitspunkte',
 		395	=> 'Gerechtigkeitspunkte',
@@ -355,7 +438,7 @@ $lang = array(
 		241	=> 'Siegel des Champions',
 		161	=> 'Splitter eines Steinbewahrers',
 	),
-	'factions' => array( // Blizzard IDs
+	'ars_data_factions' => array( // Blizzard IDs
 		1158	=> 'Wächter des Hyjal',
 		1174	=> 'Wildhammerklan',
 		369		=> 'Gadgetzan',
@@ -443,7 +526,7 @@ $lang = array(
 		1126	=> 'Die Frosterben',
 		47		=> 'Eisenschmiede',
 	),
-	'reputation' => array( // Blizzard API "standing" IDs
+	'ars_data_reputation' => array( // Blizzard API "standing" IDs
 		1	=> 'Hasserfüllt',
 		2	=> 'Feindselig',
 		3	=> 'Unfreundlich',
@@ -453,8 +536,6 @@ $lang = array(
 		7	=> 'Respektvoll',
 		8	=> 'Ehrfürchtig'
 	),
-	
-	
 	
 );
 ?>

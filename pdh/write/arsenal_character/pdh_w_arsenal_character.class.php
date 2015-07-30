@@ -95,8 +95,7 @@ if(!class_exists('pdh_w_arsenal_character')){
 		$arrData['currencies']		= json_encode($arrData['currencies']);
 		$arrData['talents']			= json_encode($arrData['talents']);
 		$arrData['professions']		= json_encode($arrData['professions']);
-		$arrData['mounts']			= json_encode($arrData['mounts']);
-		$arrData['critters']		= json_encode($arrData['critters']);
+		$arrData['companions']		= json_encode($arrData['companions']);
 		$arrData['inventory']		= json_encode($arrData['inventory']);
 	#	$arrData['achievements']	= json_encode($arrData['achievements']);
 		
@@ -134,8 +133,7 @@ if(!class_exists('pdh_w_arsenal_character')){
 					'currencies'	=> $arrData['currencies'],
 					'talents'		=> $arrData['talents'],
 					'professions'	=> $arrData['professions'],
-					'mounts'		=> $arrData['mounts'],
-					'critters'		=> $arrData['critters'],
+					'companions'	=> $arrData['companions'],
 					'inventory'		=> $arrData['inventory'],
 					'achievements'	=> $arrData['achievements']
 				);
@@ -159,8 +157,7 @@ if(!class_exists('pdh_w_arsenal_character')){
 					'currencies'	=> $arrData['currencies'],
 					'talents'		=> $arrData['talents'],
 					'professions'	=> $arrData['professions'],
-					'mounts'		=> $arrData['mounts'],
-					'critters'		=> $arrData['critters'],
+					'companions'	=> $arrData['companions'],
 					'inventory'		=> $arrData['inventory'],
 					'achievements'	=> $arrData['achievements']
 				);

@@ -46,8 +46,7 @@ $arsenalSQL = array(
 			`currencies` TEXT NULL,
 			`talents` TEXT NULL,
 			`professions` TEXT NULL,
-			`mounts` TEXT NULL,
-			`critters` TEXT NULL,
+			`companions` TEXT NULL,
 			`inventory` TEXT NULL,
 			`achievements` TEXT NULL
 			PRIMARY KEY (`id`)
